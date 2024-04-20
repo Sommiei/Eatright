@@ -1,0 +1,4 @@
+/* ChattingBot.css */
+.rsc-ts-conversation-container {
+    background-color: green !important; /* Override the default background color */
+}
