@@ -21,7 +21,7 @@ export const DashChatSide = () => {
     fetchChatHistory();
   }, []);
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (!chatInput.trim()) return;
 
     // Save the user's typed message locally in the component state
@@ -30,14 +30,26 @@ export const DashChatSide = () => {
       message: chatInput,
     };
 
-    // For demonstration purposes, simulate a bot response
-    const botResponse = {
-      user: false, // Indicate that the bot sent this message
-      message: "I'm sorry, I'm just a demo bot. I can't process your message right now.",
-    };
+    // Update the chat history with the user's message
+    setChatHistory(prevChatHistory => [...prevChatHistory, userMessage]);
 
-    // Update the chat history with both the user's message and the bot's response
-    setChatHistory(prevChatHistory => [...prevChatHistory, userMessage, botResponse]);
+    try {
+      // Make an API call to generate bot response
+      const response = await axios.post('https://7483-105-120-132-174.ngrok-free.app/api/v1/users/user_prompt', {
+        text: "",
+      });
+
+      // Extract the bot's response from the API response
+      const botMessage = {
+        user: false, // Indicate that the bot sent this message
+        message: response.data.message,
+      };
+
+      // Update the chat history with the bot's response
+      setChatHistory(prevChatHistory => [...prevChatHistory, botMessage]);
+    } catch (error) {
+      console.error('Error fetching bot response:', error);
+    }
 
     // Reset input after sending message
     setChatInput('');

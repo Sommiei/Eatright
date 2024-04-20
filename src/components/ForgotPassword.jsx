@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 
 export const ForgotPassword = () => {
@@ -13,14 +12,14 @@ export const ForgotPassword = () => {
     e.preventDefault();
     try {
       // Make a POST request to your backend endpoint for resetting password
-      const response = await axios.post('YOUR_BACKEND_RESET_PASSWORD_ENDPOINT', {
-        email: email,
+      const response = await axios.post('https://7483-105-120-132-174.ngrok-free.app/api/v1/users/forget_password', {
+        email: email, // Send the actual value of the email state variable
       });
       // Handle success response
       console.log(response.data); // Assuming your backend returns a success message
       // Clear form fields after successful submission
       setEmail('');
-     
+      setSuccessMessage('Reset link sent successfully!');
       // Navigate to "/successful" after 3 seconds
       setTimeout(() => {
         navigate('/successful');
@@ -31,9 +30,10 @@ export const ForgotPassword = () => {
       }, 3000);
     } catch (error) {
       // Handle error response
-      
+      setErrorMessage('An error occurred. Please try again later.');
     }
   };
+
   return (
     <div className='pt-5'>
       <h2 className="text-3xl font-bold text-center">Forgot Password</h2>
@@ -70,3 +70,4 @@ export const ForgotPassword = () => {
     </div>
   );
 };
+

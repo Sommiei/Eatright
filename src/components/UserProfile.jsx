@@ -14,7 +14,7 @@ const SettingsMenu = ({ isOpen, toggleTheme, theme }) => {
 const deleteAccount = async () => {
   try {
     // Send a DELETE request to the server's API endpoint for account deletion
-    const response = await axios.delete('/api/delete-account');
+    const response = await axios.delete('https://eac2-105-120-132-174.ngrok-free.app/api/v1/users/delete-user');
 
     // Check the response status
     if (response.status === 200) {

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
-import { VerificationPending } from './Verificationpending';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const SignUp = () => {
     const [firstName, setFirstName] = useState('');
@@ -14,6 +13,7 @@ export const SignUp = () => {
     const [isRegistering, setIsRegistering] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const navigate = useNavigate(); // Initialize useNavigate
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -30,21 +30,19 @@ export const SignUp = () => {
             }
 
             // Make the API call to register the user
-            const response = await axios.post('https://f79a-105-120-128-101.ngrok-free.app/api/v1/users/register', {
+            const response = await axios.post('https://7483-105-120-132-174.ngrok-free.app/api/v1/users/register', {
                 first_name: firstName,
                 last_name: lastName,
                 email: email,
-                password,
+                password: password,
             });
 
             // Handle successful registration
             console.log('User registered successfully:', response.data);
 
-            // Send verification email
-            await axios.post('/api/send-verification-email', { email: email });
+            // Navigate to SignIn page after successful registration
+            navigate('/SignIn');
 
-            // Redirect to a page indicating that a verification email has been sent
-            window.location.href = '/verificationPending';
         } catch (error) {
             console.error('Error submitting form:', error);
             setErrorMessage(error.message ?? 'An error occurred. Please try again later.');

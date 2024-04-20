@@ -26,7 +26,7 @@ export const ResetPassword = () => {
         try {
             // Make API call to reset password
             const response = await axios.post(
-                'https://f79a-105-120-128-101.ngrok-free.app/api/v1/users/reset-password',
+                'https://eac2-105-120-132-174.ngrok-free.app/api/v1/users/reset_password',
                 {
                     newPassword: newPassword
                 }

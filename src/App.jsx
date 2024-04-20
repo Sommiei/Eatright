@@ -56,6 +56,8 @@ function App() {
         <Route path="/Successful" element={<div><Successful/></div>} />
         <Route path="/Verification" element={<div><VerificationPending/></div>} />
         <Route path="/ResetPassword" element={<div><ResetPassword/></div>} />
+        <Route path="/Review" element={<div><Review/></div>} />
+
 
 
         {/* <Route path="/ReviewUpdate" element={<div><ReviewUpdate/></div>} /> */}

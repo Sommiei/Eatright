@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import axios from "axios";
 
-export const Review = () => {
+export const ReviewUpdate = () => {
   const [newReview, setNewReview] = useState({
     review: "",
     email: "", // You can add logic to get the user's email if needed
