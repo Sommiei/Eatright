@@ -32,6 +32,7 @@ import { Successful } from "./components/Successful";
 // import { ReviewUpdate } from "./components/ReviewUpdate";
 import { Logout } from "./components/Logout";
 import { VerificationPending } from "./components/Verificationpending";
+import { ResetPassword } from "./components/ResetPassword";
 
 
 function App() {
@@ -54,6 +55,8 @@ function App() {
         <Route path="/ForgotPassword" element={<div><NavBarTwo/><ForgotPassword/></div>} />
         <Route path="/Successful" element={<div><Successful/></div>} />
         <Route path="/Verification" element={<div><VerificationPending/></div>} />
+        <Route path="/ResetPassword" element={<div><ResetPassword/></div>} />
+
 
         {/* <Route path="/ReviewUpdate" element={<div><ReviewUpdate/></div>} /> */}
 
