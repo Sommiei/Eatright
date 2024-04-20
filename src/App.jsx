@@ -61,12 +61,6 @@ function App() {
 
 
 
-
-
-
-
-
-
         <Route path="/dashboard" element={<DashBoard />}>
           <Route index element={<DashRouter />} />
           <Route path="profile" element={<Profile />} />

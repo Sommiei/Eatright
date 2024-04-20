@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 export const PricingForm = () => {
   return (
     <>
-      <div className="" id="pricing">
-      <h1 className="text-center font-semibold text-3xl py-6">Pricing <span className="text-[#9DAF89]">Plans</span></h1>
+      <div className="p-6" id="pricing">
+      <h1 className="text-center font-semibold text-5xl py-6">Pricing <span className="text-[#846b57]">Plans</span></h1>
     <div className="flex items-center justify-center gap-6 py-2 flex-wrap">
       <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
         <h5 className="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">
@@ -81,7 +81,7 @@ export const PricingForm = () => {
         <Link
           to="/dashboard"
           type="button"
-          className="text-white shadow-xl bg-[#white] hover:bg-bg-color2 focus:ring-4 focus:outline-none hover:text-white focus:ring-gray-300 dark:bg-[#9DAF89]] dark:hover:bg-[#9DAF89] dark:focus:ring-[#9DAF89] font-medium rounded-lg text-sm px-12 py-3 flex justify-center items-center gap-8 text-center"
+          className="text-[#846b57] shadow-xl bg-[#white] hover:bg-[#846b57] focus:ring-4 focus:outline-none hover:text-[#ffffff] focus:ring-gray-300 dark:bg-[#9DAF89]] dark:hover:bg-[#9DAF89] dark:focus:ring-[#9DAF89] font-medium rounded-lg text-sm px-12 py-3 flex justify-center items-center gap-8 text-center"
         >
           Start Free Trial
           <BsArrowRightShort />
@@ -175,9 +175,9 @@ export const PricingForm = () => {
         <Link
           to="/payment"
           type="button"
-          className="flex items-center gap-8 justify-center text-white bg-[#9DAF89] shadow-xl hover:bg-bg-color2 focus:ring-4 focus:outline-none hover:text-white focus:ring-gray-300 dark:bg-[#9DAF89] dark:hover:bg-[#9DAF89] dark:focus:ring-[#9DAF89] font-medium rounded-lg text-sm px-2 py-3"
+          className="flex items-center gap-8 justify-center text-white bg-[#9DAF89] font-semibold shadow-xl hover:bg-[#846b57] focus:ring-4 focus:outline-none hover:text-white focus:ring-gray-300 dark:bg-[#9DAF89] dark:hover:bg-[#9DAF89] dark:focus:ring-[#9DAF89] rounded-lg text-sm px-2 py-3"
         >
-          Subscribe
+          UPGRADE
           <BsArrowRightShort />
         </Link>
         {/* <h3 className="text-[6px] py-2 "> Click to see Payment Options </h3> */}

@@ -3,7 +3,7 @@ import React from 'react';
 export const Features = () => {
   return (
     <section className="bg-gray-200 py-4 rounded px-10 "id='features'>
-      <div className="container mx-auto flex flex-col md:flex-row items-center">
+      <div className="container mx-auto flex flex-col md:flex-row max-w-[1024px] items-center">
         <div className="w-full md:w-1/2 mb-6 md:mb-0 md:pr-10">
           <h2 className="text-3xl md:text-4xl font-bold leading-tight mb-6">
             Some Of <span className="text-[#846B57]">Our</span> Features
