@@ -20,14 +20,7 @@ export const ForgotPassword = () => {
       // Clear form fields after successful submission
       setEmail('');
       setSuccessMessage('Reset link sent successfully!');
-      // Navigate to "/successful" after 3 seconds
-      setTimeout(() => {
-        navigate('/successful');
-        // Navigate to "/DashBoard" after another 3 seconds
-        setTimeout(() => {
-          navigate.push('/DashBoard');
-        }, 3000);
-      }, 3000);
+      
     } catch (error) {
       // Handle error response
       setErrorMessage('An error occurred. Please try again later.');

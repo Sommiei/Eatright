@@ -38,7 +38,7 @@ export const ContactForm = () => {
   return (
     <div className=" bg-gray-200 pb-10" id='Contact'>
       <div className='text-center mb-10 '>
-        <h1 className='text-3xl font-bold pt-5'>
+        <h1 className='text-5xl font-bold pt-5 text-black'>
           Contact <span className='text-[#846B59]'>Us</span>
         </h1>
       </div>

@@ -7,18 +7,7 @@ export const DashChatSide = () => {
   const [chatInput, setChatInput] = useState('');
 
   useEffect(() => {
-    const fetchChatHistory = async () => {
-      try {
-        // For demonstration purposes, since you don't have an actual API
-        const dummyChatHistory = [
-          { user: false, message: "Hi there! How can I help you today?" },
-        ];
-        setChatHistory(dummyChatHistory);
-      } catch (error) {
-        console.error('Error fetching chat history:', error);
-      }
-    };
-    fetchChatHistory();
+    // Fetching chat history is removed as we don't have dummyChatHistory anymore
   }, []);
 
   const sendMessage = async () => {

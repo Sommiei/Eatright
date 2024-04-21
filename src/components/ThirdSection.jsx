@@ -5,7 +5,7 @@ export const ThirdSection = () => {
     <>
       <div className="px-10 bg-white">
         <div className="">
-          <h1 className="text-center text-5xl font-bold pt-5">
+          <h1 className="text-center text-5xl font-bold pt-5 text-black">
             What We <span className="text-[#846B59] ">Offer</span>{" "}
           </h1>
         </div>

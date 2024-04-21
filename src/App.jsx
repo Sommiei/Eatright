@@ -55,7 +55,7 @@ function App() {
         <Route path="/ForgotPassword" element={<div><NavBarTwo/><ForgotPassword/></div>} />
         <Route path="/Successful" element={<div><Successful/></div>} />
         <Route path="/Verification" element={<div><VerificationPending/></div>} />
-        <Route path="/ResetPassword" element={<div><ResetPassword/></div>} />
+        <Route path="/ResetPassword" element={<div><NavBarTwo/><ResetPassword/></div>} />
         <Route path="/Review" element={<div><Review/></div>} />
 
 

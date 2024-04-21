@@ -12,11 +12,11 @@ export const Hero = () => {
   return (
     <section className="eat-right_hero container mx-auto flex flex-col md:flex-row items-center px-10">
       {/* Text area */}
-      <div className="eat-right_hero-text max-w-md md:max-w-lg md:pr-10 pt-5 md:pt-0"> {/* Adjust padding */}
-        <h1 className="text-5xl md:text-4xl font-bold leading-tight mb-4 font-poppins">
+      <div className="eat-right_hero-text max-w-md md:max-w-lg md:pr-10 pt-5 md:pt-0 text-black"> {/* Adjust padding */}
+        <h1 className="text-5xl md:text-4xl font-bold leading-tight mb-4 font-poppins t">
           Discover a <span className="text-[#846B57]">World</span> of Fresh, Nutritious Delights!
         </h1>
-        <p className="text-md md:text-xl mb-6 font-poppins">
+        <p className="text-md md:text-xl mb-6 font-poppins text-black">
           Let our AI Chatbot guide you through a personalized journey to healthier choices.
         </p>
         <div className="cta flex gap-4">

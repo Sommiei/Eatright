@@ -14,7 +14,7 @@ export const SecondSection = () => {
             />
           </div>
           <div className="w-full lg:w-[400px]">
-            <h1 className="text-5xl font-bold">Our <span className="text-[#846B59]">Mission</span></h1>
+            <h1 className="text-5xl font-bold text-black">Our <span className="text-[#846B59]">Mission</span></h1>
             <p className="py-6 text-sm font-bold capitalize">
               Eat Right aims to revolutionize healthy eating by providing personalized AI-driven meal recommendations, promoting wellness and sustainability, and empowering users to make informed choices.
             </p>

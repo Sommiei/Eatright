@@ -6,7 +6,7 @@ export const PricingForm = () => {
   return (
     <>
       <div className="p-6" id="pricing">
-      <h1 className="text-center font-semibold text-5xl py-6">Pricing <span className="text-[#846b57]">Plans</span></h1>
+      <h1 className="text-center font-bold text-5xl py-6 text-black">Pricing <span className="text-[#846b57]">Plans</span></h1>
     <div className="flex items-center justify-center gap-6 py-2 flex-wrap">
       <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
         <h5 className="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">
