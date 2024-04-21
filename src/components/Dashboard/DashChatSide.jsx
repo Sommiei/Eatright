@@ -24,8 +24,8 @@ export const DashChatSide = () => {
 
     try {
       // Make an API call to generate bot response
-      const response = await axios.post('https://7483-105-120-132-174.ngrok-free.app/api/v1/users/user_prompt', {
-        text: "",
+      const response = await axios.post('https://20be-105-113-33-128.ngrok-free.app/api/v1/users/user_prompt', {
+        text: chatInput,
       });
 
       // Extract the bot's response from the API response
@@ -59,7 +59,7 @@ export const DashChatSide = () => {
               className={`flex ${chat.user ? 'justify-end' : 'justify-start'} mb-2`}
             >
               <div
-                className={`max-w-[80%] ${chat.user ? 'bg-[#9CAF88] text-white rounded-br-none rounded-lg' : 'bg-[#846B59] text-white rounded-bl-none rounded-lg'} p-2`}
+                className={`max-w-[80%] ${chat.user ? 'bg-[#846B59] text-white shadow-lg rounded-br-none rounded-lg' : 'bg-white text-black shadow-lg rounded-bl-none rounded-lg'} p-2`}
                 style={{ wordWrap: 'break-word' }} // Apply word-wrap style
               >
                 {chat.message}

@@ -28,7 +28,7 @@ export const Hero = () => {
       </div>
 
       {/* Image area */}
-      <div className="eat-right_hero-image  md:ml-auto mb-8 md:mb-0">
+      <div className="eat-right_hero-image  md:ml-auto mb-8 md:mb-0 ">
         <img src="hero-react.png" alt="" className="w-300px md: h-auto rounded-full pt-5" />
       </div>
     </section>
