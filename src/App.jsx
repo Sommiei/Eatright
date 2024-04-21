@@ -22,6 +22,7 @@ import { NavBarTwo } from './components/NavBarTwo';
 import { Profile } from './components/UserProfile'; // Import UserProfile component
 import { Payment } from './components/DashPayment';
 import { DashRouter } from './components/Dashboard/DashRouter';
+import { Help } from './components/Help';
 import { Footer } from './components/Footer';
 import { AboutUs } from "./components/AboutUs";
 import { Termsandcondition } from "./components/termsCond";
@@ -57,6 +58,7 @@ function App() {
         <Route path="/Verification" element={<div><VerificationPending/></div>} />
         <Route path="/ResetPassword" element={<div><ResetPassword/></div>} />
         <Route path="/Review" element={<div><Review/></div>} />
+        <Route path="/Help" element={<div><Help/></div>} />
 
 
 
@@ -71,6 +73,7 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="Payment" element={<Payment />} />
           <Route path="Logout" element={<Logout />} />
+          <Route path="help" element={<Help />} />
 
         </Route>
       </Routes>
