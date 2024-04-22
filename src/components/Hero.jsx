@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 
 export const Hero = () => {
@@ -6,7 +5,7 @@ export const Hero = () => {
 
   const handleTryForFreeClick = () => {
     // Navigate to the dashboard page when "Try for free" button is clicked
-    navigate('/Dashboard');
+    navigate('/SignUp');
   };
 
   return (

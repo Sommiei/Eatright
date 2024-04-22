@@ -1,51 +1,71 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FiXCircle } from 'react-icons/fi'; // Import the stop icon
+import { FiXCircle } from 'react-icons/fi';
 
 export const DashChatSide = () => {
-  const [chatHistory, setChatHistory] = useState([]); // Initialize chatHistory as an empty array
+  const [chatHistory, setChatHistory] = useState([]);
   const [chatInput, setChatInput] = useState('');
+  const [chatCount, setChatCount] = useState(0);
 
   useEffect(() => {
-    // Fetching chat history is removed as we don't have dummyChatHistory anymore
-  }, []);
+    if (chatCount === 5) {
+      window.location.href = '/payment'; // Redirect when chatCount reaches 5
+    }
+  }, [chatCount]); // Trigger effect whenever chatCount changes
+
+  useEffect(() => {
+    const handlePaymentSuccess = () => {
+      // Check if the URL contains a success indicator (e.g., '/payment?success=true')
+      if (window.location.href.includes('success=true')) {
+        // Redirect to the dashboard after successful payment
+        window.location.href = '/dashboard';
+      }
+    };
+
+    // Call handlePaymentSuccess when component mounts
+    handlePaymentSuccess();
+
+    // Listen for changes in the URL (in case of successful payment)
+    window.addEventListener('popstate', handlePaymentSuccess);
+
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener('popstate', handlePaymentSuccess);
+    };
+  }, []); // Run only once when the component mounts
 
   const sendMessage = async () => {
     if (!chatInput.trim()) return;
 
-    // Save the user's typed message locally in the component state
     const userMessage = {
-      user: true, // Indicate that the user sent this message
+      user: true,
       message: chatInput,
     };
 
-    // Update the chat history with the user's message
     setChatHistory(prevChatHistory => [...prevChatHistory, userMessage]);
 
     try {
-      // Make an API call to generate bot response
       const response = await axios.post('https://38e2-129-205-113-190.ngrok-free.app/api/v1/users/user_prompt', {
         text: chatInput,
       });
 
-      // Extract the bot's response from the API response
       const botMessage = {
-        user: false, // Indicate that the bot sent this message
+        user: false,
         message: response.data.message,
       };
 
-      // Update the chat history with the bot's response
       setChatHistory(prevChatHistory => [...prevChatHistory, botMessage]);
     } catch (error) {
       console.error('Error fetching bot response:', error);
     }
 
-    // Reset input after sending message
     setChatInput('');
+
+    // Increment chat count after sending message
+    setChatCount(prevCount => prevCount + 1);
   };
 
   const handleStopInput = () => {
-    // Clear the input field when the stop button is clicked
     setChatInput('');
   };
 
@@ -60,7 +80,7 @@ export const DashChatSide = () => {
             >
               <div
                 className={`max-w-[80%] ${chat.user ? 'bg-[#846B59] text-white shadow-lg rounded-br-none rounded-lg' : 'bg-white text-black shadow-lg rounded-bl-none rounded-lg'} p-2`}
-                style={{ wordWrap: 'break-word' }} // Apply word-wrap style
+                style={{ wordWrap: 'break-word' }}
               >
                 {chat.message}
               </div>
@@ -79,7 +99,6 @@ export const DashChatSide = () => {
           className="flex-1 border border-gray-300 rounded-md px-4 py-2 mr-2 text-sm"
           placeholder="Type your message..."
         />
-        {/* Include the stop icon button */}
         {chatInput && (
           <button onClick={handleStopInput} className="text-gray-400 hover:text-gray-600">
             <FiXCircle />

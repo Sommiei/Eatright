@@ -1,20 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FiSettings } from 'react-icons/fi';
 import axios from 'axios'; // Import axios for making HTTP requests
 
 const SettingsMenu = ({ isOpen, toggleTheme, theme }) => {
-  const archiveChats = () => {
-    // Logic to archive all chats
-  };
 
-  const deleteChats = () => {
-    // Logic to delete all chats
-  };
+   
 
   const deleteAccount = async () => {
     try {
       // Send a DELETE request to the server's API endpoint for account deletion
-      const response = await axios.delete('https://eac2-105-120-132-174.ngrok-free.app/api/v1/users/delete-user');
+      const response = await axios.delete('https://your-api-url/delete-user');
 
       // Check the response status
       if (response.status === 200) {
@@ -34,8 +29,8 @@ const SettingsMenu = ({ isOpen, toggleTheme, theme }) => {
   };
 
   return (
-    <div className={`${isOpen ? 'block' : 'hidden'} md:block fixed md:relative right-0 md:right-auto bottom-0 md:bottom-auto z-50 md:z-auto`}>
-      <aside className={`settings-menu font-poppins flex items-center rounded-lg font-semibold text-black text-sm bg-white shadow-lg cursor-pointer md:static w-64 md:w-auto`}>
+    <div className={`${isOpen ? 'block' : 'hidden'} md:block fixed md:relative right-0 md:right-auto bottom-0 md:bottom-auto z-50  md:z-auto`}>
+      <aside className={`settings-menu transform hover:scale-105 transition-transform font-poppins flex items-center rounded-lg font-semibold text-black text-sm bg-white shadow-lg cursor-pointer md:static w-64 md:w-auto`}>
         {isOpen && (
           <ul className="menu-list p-4 md:p-10 flex flex-col justify-around gap-3 ">
             <li onClick={toggleTheme} className="cursor-pointer ">
@@ -49,8 +44,7 @@ const SettingsMenu = ({ isOpen, toggleTheme, theme }) => {
                 </>
               )} */}
             </li>
-            <a href='#' onClick={archiveChats} className="cursor-pointer">Archive All Chats</a>
-            <a href='#' onClick={deleteChats} className="cursor-pointer">Delete All Chats</a>
+            
             <a href='#' onClick={deleteAccount} className="cursor-pointer text-red-500">Delete Account</a>
           </ul>
         )}
@@ -91,9 +85,9 @@ export const Profile = () => {
 
   return (
     <div className='max-w-screen-md mx-auto w-full h-full flex flex-col md:flex-row items-center justify-center gap-10 px-4 md:px-0'>
-      <div className="bg-white rounded-lg shadow-lg flex flex-col justify-between w-full md:w-auto">
-        <div className="p-4 md:p-8 flex justify-center">
-          <div className="flex items-center justify-center">
+      <div className="bg-white rounded-lg transform hover:scale-105 transition-transform shadow-lg flex flex-col justify-between w-full md:w-auto">
+        <div className="p-4 md:p-8 flex justify-center ">
+          <div className="flex items-center justify-center ">
             <img
               className="h-20 w-20 rounded-full mr-4 md:mr-10 ml-4 object-fit" // Added ml-4 for left margin
               src={user.avatar} // Use user's avatar URL

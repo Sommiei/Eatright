@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
@@ -37,7 +37,7 @@ export const Logout = () => {
   return (
     <>
       {isLoggedOut && (
-        <div className="flex flex-col justify-center items-center h-screen">
+        <div className="flex flex-col justify-center items-center h-screen transform hover:scale-105 transition-transform">
           <div className="shadow-xl w-full max-w-md p-6 bg-white rounded-lg">
             <h1 className="text-red-500 font-semibold text-center mb-4">
               Logout Alert

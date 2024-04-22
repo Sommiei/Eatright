@@ -23,15 +23,15 @@ export const DashBoard = () => {
     setUserLoggedIn(userIsLoggedIn);
   }, []);
 
-  useEffect(() => {
-    const logoutTimer = setTimeout(() => {
-      if (!userLoggedIn) {
-        navigate('/SignIn');
-      }
-    }, 100000 );
+  // useEffect(() => {
+  //   const logoutTimer = setTimeout(() => {
+  //     if (!userLoggedIn) {
+  //       navigate('/SignIn');
+  //     }
+  //   }, );
 
-    return () => clearTimeout(logoutTimer);
-  }, [userLoggedIn, navigate]);
+  //   return () => clearTimeout(logoutTimer);
+  // }, [userLoggedIn, navigate]);
 
   useEffect(() => {
     const fetchChatHistory = async () => {
@@ -68,7 +68,9 @@ export const DashBoard = () => {
             {showHistory && <DashHistory chatHistory={chatHistory} />}
           </>
         )}
-        <button className="toggle-button" onClick={toggleHistory}><i className="fas fa-history"></i></button>
+        <button className="toggle-button" onClick={toggleHistory}>
+          {showHistory ? <i className="fas fa-angle-double-left"></i> : <i className="fas fa-angle-double-right"></i>}
+        </button>
       </div>
     </>
   );

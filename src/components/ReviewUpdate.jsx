@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import axios from "axios";
 
@@ -37,18 +37,18 @@ export const ReviewUpdate = () => {
   };
 
   return (
-    <div className="bg-gray-100 py-8">
-      <div className="max-w-5xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8 text-center text-black">
-          Reviews
+    <div className=" py-8">
+      <div className="max-w-7xl mx-auto px-4">
+        <h2 className="text-2xl font-bold mb-8 text-center text-black">
+          You can drop your Review here!
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="flex flex-cols-1 sm:flex-cols-2 lg:flex-cols-4 gap-4  justify-center items-center pt-10">
           <div className="bg-white rounded-lg shadow-md p-6 transform hover:scale-105 transition-transform">
             <textarea
               name="review"
               value={newReview.review}
               onChange={handleInputChange}
-              className="w-full h-24 px-4 py-2 border rounded-md resize-none mb-4"
+              className="w-full h-24 px-4 py-2 border rounded-md resize-none mb-4 text-sm"
               placeholder="Write your review..."
             ></textarea>
             <input
@@ -56,7 +56,7 @@ export const ReviewUpdate = () => {
               name="email"
               value={newReview.email}
               onChange={handleInputChange}
-              className="w-full px-4 py-2 border rounded-md mb-4"
+              className="w-full px-4 py-2 border rounded-md mb-4 text-sm"
               placeholder="Your email"
             />
             <div className="flex">
@@ -71,7 +71,7 @@ export const ReviewUpdate = () => {
             </div>
             <button
               onClick={handleSubmit}
-              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mt-4"
+              className="bg-[#846b57] hover:bg-[#b6987f] hover:text-black hover:font-semi-bold text-white font-semibold py-2 px-4 rounded mt-4"
             >
               Submit Review
             </button>
