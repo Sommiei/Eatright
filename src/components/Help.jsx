@@ -78,16 +78,16 @@ export const Help = () => {
 
 
   return (
-    <div className="pt-20 p-10 flex flex-col gap-4">
+    <div className="pt-10 p-10 flex flex-col gap-4">
         <h1 className="text-4xl font-semibold">Welcome to <span className="text-[#846b57]">EatRight </span></h1>
         <h3 className="text-2xl text-[#846b57] text-medium " >Your Meal Chatbot Assistant</h3>
-        <p className="font-medium text-[20px]">
+        <p className="font-medium text-md">
           At EatRight, we understand the challenges that come with managing ulcer-related dietary restrictions. Our mission is to provide you with the tools, resources, and support you need to navigate your meal choices with confidence. Whether you're newly diagnosed or seeking additional guidance, our comprehensive help section is designed to answer your questions and empower you on your journey towards better health.
         </p>
         {helpSections.map((section, index) => (
           <div key={index}>
             <h2 className="font-semibold p-2 text-[20px]">{index + 1}. {section.title}</h2>
-            <ul className="text-[18px]">
+            <ul className="text-sm">
               {section.content.map((item, idx) => (
                 <li key={idx}>{item}</li>
               ))}

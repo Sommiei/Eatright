@@ -1,31 +1,42 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 export const Logout = () => {
   const navigate = useNavigate();
-  const [isloggedout, setLoggedout] = useState(true);
+  const [isLoggedOut, setIsLoggedOut] = useState(true);
 
-  const handleYesClick = () => {
-    // Calculate the expiration date
-    const expirationDate = new Date();
-    expirationDate.setFullYear(expirationDate.getFullYear() - 1);
-    
-    // Delete the token cookie
-    document.cookie = `token=; expires=${expirationDate.toUTCString()}; path=/;`;
+  const handleYesClick = async () => {
+    try {
+      // Make API request to logout endpoint with the user's API key
+      await axios.post('LOGOUT_API_ENDPOINT', {
+        apiKey: 'USER_API_KEY_HERE'
+      });
 
-    // Redirect to the home page
-    setLoggedout(false);
-    navigate("/");
+      // Calculate the expiration date
+      const expirationDate = new Date();
+      expirationDate.setFullYear(expirationDate.getFullYear() - 1);
+      
+      // Delete the token cookie
+      document.cookie = `token=; expires=${expirationDate.toUTCString()}; path=/;`;
+
+      // Redirect to the home page
+      setIsLoggedOut(false);
+      navigate("/");
+    } catch (error) {
+      console.error('Error logging out:', error);
+      // Handle error here
+    }
   };
 
   const handleNoClick = () => {
-    setLoggedout(false);
+    setIsLoggedOut(false);
     console.log("User chose not to log out");
   };
 
   return (
     <>
-      {isloggedout && (
+      {isLoggedOut && (
         <div className="flex flex-col justify-center items-center h-screen">
           <div className="shadow-xl w-full max-w-md p-6 bg-white rounded-lg">
             <h1 className="text-red-500 font-semibold text-center mb-4">

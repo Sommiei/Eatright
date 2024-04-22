@@ -51,7 +51,7 @@ const SettingsMenu = ({ isOpen, toggleTheme, theme }) => {
             </li>
             <a href='#' onClick={archiveChats} className="cursor-pointer">Archive All Chats</a>
             <a href='#' onClick={deleteChats} className="cursor-pointer">Delete All Chats</a>
-            <a href='#' onClick={deleteAccount} className="cursor-pointer">Delete Account</a>
+            <a href='#' onClick={deleteAccount} className="cursor-pointer text-red-500">Delete Account</a>
           </ul>
         )}
       </aside>

@@ -30,7 +30,7 @@ export const SignUp = () => {
             }
 
             // Make the API call to register the user
-            const response = await axios.post('https://f0d1-105-113-33-128.ngrok-free.app/api/v1/users/register', {
+            const response = await axios.post('https://38e2-129-205-113-190.ngrok-free.app/api/v1/users/register', {
                 first_name: firstName,
                 last_name: lastName,
                 email: email,

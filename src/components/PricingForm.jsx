@@ -10,13 +10,13 @@ export const PricingForm = () => {
     <div className="flex items-center justify-center gap-6 py-2 flex-wrap">
       <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
         <h5 className="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">
-          Free plan
+          Monthly plan
         </h5>
         <div className="flex items-baseline text-gray-900 dark:text-white">
           <span className="text-2xl font-medium">NGN</span>
-          <span className="text-4xl font-semibold tracking-tight">0</span>
+          <span className="text-4xl font-semibold tracking-tight">2,000</span>
           <span className="ms-1 text-xl font-normal text-gray-500 dark:text-gray-400">
-            /Yearly
+            /Monthly
           </span>
         </div>
         <ul role="list" className="space-y-5 my-7">
@@ -79,7 +79,7 @@ export const PricingForm = () => {
           </li>
         </ul>
         <Link
-          to="/dashboard"
+          to="/payment"
           type="button"
           className="text-[#846b57] shadow-xl bg-[#white] hover:bg-[#846b57] focus:ring-4 focus:outline-none hover:text-[#ffffff] focus:ring-gray-300 dark:bg-[#9DAF89]] dark:hover:bg-[#9DAF89] dark:focus:ring-[#9DAF89] font-medium rounded-lg text-sm px-12 py-3 flex justify-center items-center gap-8 text-center"
         >
@@ -92,9 +92,14 @@ export const PricingForm = () => {
         <h5 className="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">
           Premium Plan
         </h5>
+        <div className="dicount relative">
+          <button className="bg-[#846b57] h-[40px] absolute bottom-5 right-1 w-[100px] rounded-full text-white font-bold text-sm">
+            20% discount
+          </button>
+        </div>
         <div className="flex items-baseline text-gray-900 dark:text-white">
           <span className="text-2xl font-medium">NGN</span>
-          <span className="text-4xl font-semibold tracking-tight">10, 000</span>
+          <span className="text-4xl font-semibold tracking-tight">20, 000</span>
           <span className="ms-1 text-xl font-normal text-gray-500 dark:text-gray-400">
             /Yearly
           </span>
