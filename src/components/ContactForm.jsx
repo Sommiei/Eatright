@@ -36,7 +36,7 @@ export const ContactForm = () => {
   };
 
   return (
-    <div className=" bg-gray-200 pb-10" id='Contact'>
+    <div className=" bg-gray-200 pb-10" id='contact'>
       <div className='text-center mb-10 '>
         <h1 className='text-3xl font-bold pt-5'>
           Contact <span className='text-[#846B59]'>Us</span>

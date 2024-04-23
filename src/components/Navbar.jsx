@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { HashLink as Link } from 'react-router-hash-link';
+
 
 export const Navbar = () => {
   // State to track the user's authentication status
@@ -52,9 +54,9 @@ export const Navbar = () => {
           <a href="/">
             <img src="Eatright-logo.png" alt="Logo" className="h-[50px]" />
           </a>
-          <a href="/AboutUs" className="text-gray-800 hover:text-gray-600">About Us</a>
-          <a href="#Pricing" className="text-gray-800 hover:text-gray-600">Pricing</a>
-          <a href="#Contact" className="text-gray-800 hover:text-gray-600">Contact</a>
+          <Link to="/AboutUs" className="text-gray-800 hover:text-gray-600">About Us</Link>
+          <Link smooth to="/#pricing" className="text-gray-800 hover:text-gray-600">Pricing</Link>
+          <Link smooth to="/#contact" className="text-gray-800 hover:text-gray-600">Contact</Link>
         </nav>
         <div className="flex space-x-4 text-center items-center">
           {/* Conditionally render Logout button if user is logged in */}

@@ -50,6 +50,7 @@ function App() {
         <Route path="/SignIn" element={<div><NavBarTwo /><SignIn /></div>} />
         <Route path="/AboutUs" element={<div><AboutUs /></div>} />
         <Route path="/payment" element={<div><Payment /></div>} />
+        <Route path="/pricing" element={<div><PricingForm /></div>} />
         <Route path="/Terms" element={<div><Termsandcondition /></div>} />
         <Route path="/ReturnPolicy" element={<div><ReturnPolicy/></div>} />
         <Route path="/Privacy" element={<div><Privacy/></div>} />
