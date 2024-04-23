@@ -1,15 +1,27 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const ResetPassword = () => {
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        // Your token validation logic should have been handled in the parent component
+        const queryParams = new URLSearchParams(location.search);
+        const token = queryParams.get('token');
+
+        if (!token) {
+          // Token not found, navigate to an error page or display a message
+          navigate('/token-not-found');
+          return;
+        }
 
         // Validate password format
         if (!isValidPassword(newPassword)) {
@@ -28,14 +40,23 @@ export const ResetPassword = () => {
             const response = await axios.post(
                 'https://eac2-105-120-132-174.ngrok-free.app/api/v1/users/reset_password',
                 {
-                    newPassword: newPassword
+                    newPassword: newPassword,
+                    token: token // Send the token to your backend
                 }
             );
 
             // Handle success response
             console.log('Password reset successful:', response.data);
             setErrorMessage('');
+
             // Redirect user or display success message
+            setTimeout(() => {
+                navigate('/successful');
+                // Navigate to "/DashBoard" after 3 seconds
+                setTimeout(() => {
+                    navigate('/DashBoard');
+                }, 3000);
+            }, 3000);
         } catch (error) {
             // Handle error response
             console.error('Error resetting password:', error);

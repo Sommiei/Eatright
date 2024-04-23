@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import axios from 'axios';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { Link, useNavigate } from 'react-router-dom';
@@ -30,7 +30,7 @@ export const SignUp = () => {
             }
 
             // Make the API call to register the user
-            const response = await axios.post('https://7483-105-120-132-174.ngrok-free.app/api/v1/users/register', {
+            const response = await axios.post('https://38e2-129-205-113-190.ngrok-free.app/api/v1/users/register', {
                 first_name: firstName,
                 last_name: lastName,
                 email: email,

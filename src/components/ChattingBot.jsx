@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ChatBot from "react-simple-chatbot";
 import './ChattingBot.css'; // Import custom CSS file
 

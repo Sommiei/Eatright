@@ -18,7 +18,7 @@ export const ContactForm = () => {
     event.preventDefault();
     // console.log(baseModel);
 
-    axios.post('https://f79a-105-120-128-101.ngrok-free.app/api/v1/users/contact-us', baseModel)
+    axios.post('https://38e2-129-205-113-190.ngrok-free.app/api/v1/users/contact-us', baseModel)
       .then((response) => {
         setResponseMessage('Form submitted successfully!');
         console.log(response.data); // Handle success response
@@ -38,7 +38,7 @@ export const ContactForm = () => {
   return (
     <div className=" bg-gray-200 pb-10" id='contact'>
       <div className='text-center mb-10 '>
-        <h1 className='text-3xl font-bold pt-5'>
+        <h1 className='text-5xl font-bold pt-5 text-black'>
           Contact <span className='text-[#846B59]'>Us</span>
         </h1>
       </div>

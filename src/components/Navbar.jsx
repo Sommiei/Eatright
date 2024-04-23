@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { HashLink as Link } from 'react-router-hash-link';
-
 
 export const Navbar = () => {
   // State to track the user's authentication status
@@ -23,7 +21,7 @@ export const Navbar = () => {
   return (
     <div>
       {/* Navbar for small and medium screens */}
-      <header className="bg-white p-4 flex justify-between items-center px-10 shadow-md sticky top-0 z-10 md:hidden">
+      <header className="bg-white p-4 flex justify-between text-black items-center px-10 shadow-md sticky top-0 z-10 md:hidden ">
         <div className="flex items-center space-x-8">
           {/* Logo */}
           <a href="/">
@@ -49,7 +47,7 @@ export const Navbar = () => {
       </header>
 
       {/* Navbar for large screens */}
-      <header className="bg-white p-4 flex justify-between items-center px-10 shadow-md sticky top-0 z-10 hidden md:flex">
+      <header className="bg-white p-4 flex justify-between text-black items-center px-10 shadow-md sticky top-0 z-10 hidden md:flex">
         <nav className="flex justify-center items-center space-x-8 font-bold sticky top-0 z-10">
           <a href="/">
             <img src="Eatright-logo.png" alt="Logo" className="h-[50px]" />

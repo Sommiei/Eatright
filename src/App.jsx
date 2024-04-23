@@ -1,5 +1,4 @@
 import "./App.css";
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { DashBoard } from './components/Dashboard/DashBoard'
 import { Navbar } from './components/Navbar';
@@ -30,10 +29,10 @@ import { ReturnPolicy } from "./components/ReturnPolicy";
 import { Privacy } from "./components/Privacy";
 import { ForgotPassword } from "./components/ForgotPassword";
 import { Successful } from "./components/Successful";
-// import { ReviewUpdate } from "./components/ReviewUpdate";
 import { Logout } from "./components/Logout";
 import { VerificationPending } from "./components/Verificationpending";
 import { ResetPassword } from "./components/ResetPassword";
+import { ReviewUpdate } from "./components/ReviewUpdate";
 
 
 function App() {
@@ -57,7 +56,7 @@ function App() {
         <Route path="/ForgotPassword" element={<div><NavBarTwo/><ForgotPassword/></div>} />
         <Route path="/Successful" element={<div><Successful/></div>} />
         <Route path="/Verification" element={<div><VerificationPending/></div>} />
-        <Route path="/ResetPassword" element={<div><ResetPassword/></div>} />
+        <Route path="/ResetPassword" element={<div><NavBarTwo/><ResetPassword/></div>} />
         <Route path="/Review" element={<div><Review/></div>} />
         <Route path="/Help" element={<div><Help/></div>} />
 
@@ -74,6 +73,7 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="Payment" element={<Payment />} />
           <Route path="Logout" element={<Logout />} />
+          <Route path="Review" element={<ReviewUpdate />} />
           <Route path="help" element={<Help />} />
 
         </Route>

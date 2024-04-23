@@ -39,8 +39,9 @@
     background-color: #f8f2f2;
     overflow: hidden;
     z-index: 1;
+    
   }
-  
+ 
   .item-details {
     position: absolute;
     bottom: 0;

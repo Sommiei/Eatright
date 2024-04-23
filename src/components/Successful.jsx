@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { RiLoader3Line } from "react-icons/ri";
 import { IoIosCheckmark } from "react-icons/io";
 

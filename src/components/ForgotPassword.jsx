@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 export const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       // Make a POST request to your backend endpoint for resetting password
-      const response = await axios.post('https://7483-105-120-132-174.ngrok-free.app/api/v1/users/forget_password', {
+      const response = await axios.post('https://38e2-129-205-113-190.ngrok-free.app/api/v1/users/password-recovery/', {
         email: email, // Send the actual value of the email state variable
       });
       // Handle success response
@@ -20,14 +18,7 @@ export const ForgotPassword = () => {
       // Clear form fields after successful submission
       setEmail('');
       setSuccessMessage('Reset link sent successfully!');
-      // Navigate to "/successful" after 3 seconds
-      setTimeout(() => {
-        navigate('/successful');
-        // Navigate to "/DashBoard" after another 3 seconds
-        setTimeout(() => {
-          navigate.push('/DashBoard');
-        }, 3000);
-      }, 3000);
+      
     } catch (error) {
       // Handle error response
       setErrorMessage('An error occurred. Please try again later.');

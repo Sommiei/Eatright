@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 
 export const Navbar3 = () => {
   // State to track the user's authentication status

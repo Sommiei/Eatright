@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import  { useRef, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -81,7 +81,7 @@ export const VerificationPending = () => {
         </div>
         
         {/* Button to send a verification code */}
-        <button onClick={sendVerificationCode} className='mt-10 bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-600 focus:outline-none'>Send Verification Code</button>
+        <button onClick={sendVerificationCode} className='mt-10 bg-[#846B59] text-white py-2 px-6 rounded hover:bg-[#bd9a81] focus:outline-none'>Send Verification Code</button>
         {/* Input fields for entering the verification code */}
       </div>
     </div>

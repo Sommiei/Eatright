@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 
 export const Hero = () => {
@@ -6,17 +5,17 @@ export const Hero = () => {
 
   const handleTryForFreeClick = () => {
     // Navigate to the dashboard page when "Try for free" button is clicked
-    navigate('/Dashboard');
+    navigate('/SignUp');
   };
 
   return (
     <section className="eat-right_hero container mx-auto flex flex-col md:flex-row items-center px-10">
       {/* Text area */}
-      <div className="eat-right_hero-text max-w-md md:max-w-lg md:pr-10 pt-5 md:pt-0"> {/* Adjust padding */}
-        <h1 className="text-5xl md:text-4xl font-bold leading-tight mb-4 font-poppins">
+      <div className="eat-right_hero-text max-w-md md:max-w-lg md:pr-10 pt-5 md:pt-0 text-black"> {/* Adjust padding */}
+        <h1 className="text-5xl md:text-4xl font-bold leading-tight mb-4 font-poppins t">
           Discover a <span className="text-[#846B57]">World</span> of Fresh, Nutritious Delights!
         </h1>
-        <p className="text-md md:text-xl mb-6 font-poppins">
+        <p className="text-md md:text-xl mb-6 font-poppins text-black">
           Let our AI Chatbot guide you through a personalized journey to healthier choices.
         </p>
         <div className="cta flex gap-4">
@@ -28,7 +27,7 @@ export const Hero = () => {
       </div>
 
       {/* Image area */}
-      <div className="eat-right_hero-image  md:ml-auto mb-8 md:mb-0">
+      <div className="eat-right_hero-image  md:ml-auto mb-8 md:mb-0 ">
         <img src="hero-react.png" alt="" className="w-300px md: h-auto rounded-full pt-5" />
       </div>
     </section>
