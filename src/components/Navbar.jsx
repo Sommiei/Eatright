@@ -54,9 +54,9 @@ export const Navbar = () => {
           <a href="/">
             <img src="Eatright-logo.png" alt="Logo" className="h-[50px]" />
           </a>
-          <a href="/AboutUs" className="text-gray-800 hover:text-gray-600">About Us</a>
-          <a href="#Pricing" className="text-gray-800 hover:text-gray-600">Pricing</a>
-          <a href="#Contact" className="text-gray-800 hover:text-gray-600">Contact</a>
+          <Link to="/AboutUs" className="text-gray-800 hover:text-gray-600">About Us</Link>
+          <Link smooth to="/#pricing" className="text-gray-800 hover:text-gray-600">Pricing</Link>
+          <Link smooth to="/#contact" className="text-gray-800 hover:text-gray-600">Contact</Link>
         </nav>
         <div className="flex space-x-4 text-center items-center">
           {/* Conditionally render Logout button if user is logged in */}
@@ -80,9 +80,9 @@ export const Navbar = () => {
       {showMenu && (
         <div className="bg-white shadow-md p-4 mt-2 md:hidden">
           <div className="flex flex-col space-y-4">
-            <a href="#" className="text-gray-800 hover:text-gray-600 text-lg px-4 py-2 rounded-full shadow-md">About Us</a>
-            <a href="#" className="text-gray-800 hover:text-gray-600 text-lg px-4 py-2 rounded-full shadow-md">Pricing</a>
-            <a href="/ContactForm" className="text-gray-800 hover:text-gray-600 text-lg px-4 py-2 rounded-full shadow-md">Contact</a>
+            <Link smooth to="/About" className="text-gray-800 hover:text-gray-600 text-lg px-4 py-2 rounded-full shadow-md">About Us</Link>
+            <Link smooth to="/#pricing" className="text-gray-800 hover:text-gray-600 text-lg px-4 py-2 rounded-full shadow-md">Pricing</Link>
+            <Link smooth to="/#contact" className="text-gray-800 hover:text-gray-600 text-lg px-4 py-2 rounded-full shadow-md">Contact</Link>
             {/* Render login and sign up buttons */}
             {!isLoggedIn && (
               <div className='flex items-center text-[#9DAF89] font-bold'>
