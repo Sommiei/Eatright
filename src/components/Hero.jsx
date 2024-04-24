@@ -1,11 +1,13 @@
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+import { HashLink as Link } from 'react-router-hash-link';
+
 
 export const Hero = () => {
   const navigate = useNavigate(); // Initialize useNavigate
 
   const handleTryForFreeClick = () => {
     // Navigate to the dashboard page when "Try for free" button is clicked
-    navigate('/SignUp');
+    navigate ('/SignUp');
   };
 
   return (
@@ -22,7 +24,7 @@ export const Hero = () => {
           <button className="btn bg-[#9DAF88] text-white hover:text-[#9DAF88] px-6 py-2 rounded-md" onClick={handleTryForFreeClick}>
             Try for free
           </button>
-          <button className="btn btn-outline border-[#9DAF88] text-[#9DAF88] px-6 py-2 rounded-md">Show a Demo</button>
+          <Link smooth to="/dashboard" className="btn btn-outline border-[#9DAF88] text-[#9DAF88] px-6 py-2 rounded-md">Show a Demo</Link>
         </div>
       </div>
 

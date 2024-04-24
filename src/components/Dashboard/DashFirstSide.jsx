@@ -23,10 +23,8 @@ export const DashFirstSide = ({ setComponent, setShowUserProfile }) => {
     <div className="w-full md:w-72 bg-white text-black shadow shadow-black h-screen flex flex-col px-5">
       {/* Toggle Dashboard Button */}
       <button onClick={() => setDashboardVisible(!dashboardVisible)} className="mt-4 ml-4">
-        {dashboardVisible ? <BiArrowFromRight/> : <BiArrowFromLeft />}
-        
+        {dashboardVisible ? <BiArrowFromLeft/> : <BiArrowFromRight />}
       </button>
-
 
       {/* Item List */}
       {dashboardVisible && (

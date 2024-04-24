@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { HashLink as Link } from 'react-router-hash-link';
+
 
 export const Navbar = () => {
   // State to track the user's authentication status

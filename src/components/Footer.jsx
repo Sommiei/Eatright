@@ -8,16 +8,16 @@ export const Footer = () => {
           <h6 className="footer-title">Company</h6>
           <a className="link link-hover"href="/AboutUs">About us</a>
           <a className="link link-hover"href="#Contact">Contact us</a>
-          <a className="link link-hover">Careers</a>
-          <a className="link link-hover">Press</a>
+          <a className="link link-hover">News</a>
+          {/* <a className="link link-hover">Careers</a> */}
+          {/* <a className="link link-hover">Press</a> */}
         </nav>
         <nav>
           <h6 className="footer-title">Product</h6>
           <a className="link link-hover"href="#features">Features</a>
           <a className="link link-hover"href="#Pricing">Pricing</a>
-          <a className="link link-hover">News</a>
           <a href="/help" className="link link-hover">Help desk</a>
-          <a className="link link-hover">Support</a>
+          {/* <a className="link link-hover">Support</a> */}
         </nav>
         <nav>
           <h6 className="footer-title">Legal</h6>
