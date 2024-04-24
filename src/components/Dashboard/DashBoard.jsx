@@ -66,6 +66,7 @@ export const DashBoard = () => {
           <>
             <DashChatSide chatHistory={chatHistory} />
             {showHistory && <DashHistory chatHistory={chatHistory} />}
+            
           </>
         )}
         <button className="toggle-button" onClick={toggleHistory}>

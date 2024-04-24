@@ -1,7 +1,7 @@
 export const SecondSection = () => {
   return (
     <>
-      <div className=" max-w-full bg-white px-10">
+      <div className="hero min-h-screen bg-white px-10">
         <div className="hero-content flex-col lg:flex-row flex gap-8 lg:gap-52 shadow-lg rounded-lg">
           {/* Adjusted image position for md */}
           <div className="relative w-full lg:w-[400px] pt-44 lg:pt-0 sm:pb-48 mt-40 flex justify-center md:justify-start"> 

@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { Link, useNavigate } from 'react-router-dom';
@@ -13,6 +13,7 @@ export const SignUp = () => {
     const [isRegistering, setIsRegistering] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [acceptTerms, setAcceptTerms] = useState(false); // State for checkbox
     const navigate = useNavigate(); // Initialize useNavigate
 
     const handleSubmit = async (event) => {
@@ -30,7 +31,7 @@ export const SignUp = () => {
             }
 
             // Make the API call to register the user
-            const response = await axios.post('https://38e2-129-205-113-190.ngrok-free.app/api/v1/users/register', {
+            const response = await axios.post('http://37.27.42.7:5000/api/v1/users/register', {
                 first_name: firstName,
                 last_name: lastName,
                 email: email,
@@ -57,6 +58,10 @@ export const SignUp = () => {
 
     const toggleConfirmPasswordVisibility = () => {
         setShowConfirmPassword(!showConfirmPassword);
+    };
+
+    const handleTermsCheckboxChange = () => {
+        setAcceptTerms(!acceptTerms); // Toggle checkbox state
     };
 
     return (
@@ -146,9 +151,20 @@ export const SignUp = () => {
                                 </span>
                             </div>
                         </div>
-                        <div className='flex justify-between items-center pt-3 px-1'>
+                        <div className="mb-4 flex justify-between items-center">
+                            <div>
+                                <input
+                                    type="checkbox"
+                                    id="acceptTerms"
+                                    name="acceptTerms"
+                                    checked={acceptTerms}
+                                    onChange={handleTermsCheckboxChange}
+                                    className="mr-2"
+                                />
+                                <label htmlFor="acceptTerms" className='text-gray-700'>I accept the </label>
+                                <Link to="/terms" className='text-[#846B59] underline'>Terms and Conditions</Link>
+                            </div>
                             <Link to="/SignIn" className='text-[#846B59] underline'>Login</Link>
-                            <Link to="/terms" className='text-[#846B59] underline'>Terms and Conditions</Link>
                         </div>
                         <div className='flex justify-center items-center mt-3'>
                             <button

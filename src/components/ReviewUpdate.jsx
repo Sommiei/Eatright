@@ -4,8 +4,7 @@ import axios from "axios";
 
 export const ReviewUpdate = () => {
   const [newReview, setNewReview] = useState({
-    review: "",
-    email: "", // You can add logic to get the user's email if needed
+    content: "",
     rating: 0,
   });
 
@@ -27,7 +26,7 @@ export const ReviewUpdate = () => {
   const handleSubmit = async () => {
     try {
       // Send review data to the server
-      const response = await axios.post("/api/reviews", newReview);
+      const response = await axios.post("http://37.27.42.7:5000/api/v1/users/reviews", newReview);
       console.log("Review submitted successfully:", response.data);
       // Optionally, you can redirect the user or show a success message
     } catch (error) {
@@ -43,7 +42,7 @@ export const ReviewUpdate = () => {
           You can drop your Review here!
         </h2>
         <div className="flex flex-cols-1 sm:flex-cols-2 lg:flex-cols-4 gap-4  justify-center items-center pt-10">
-          <div className="bg-white rounded-lg shadow-md p-6 transform hover:scale-105 transition-transform">
+          <div className="bg-white rounded-lg shadow-lg p-6 transform hover:scale-105 transition-transform">
             <textarea
               name="review"
               value={newReview.review}
@@ -51,7 +50,7 @@ export const ReviewUpdate = () => {
               className="w-full h-24 px-4 py-2 border rounded-md resize-none mb-4 text-sm"
               placeholder="Write your review..."
             ></textarea>
-            <input
+            <input 
               type="email"
               name="email"
               value={newReview.email}
