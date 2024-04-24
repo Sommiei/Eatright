@@ -50,7 +50,7 @@ export const ReviewUpdate = () => {
               className="w-full h-24 px-4 py-2 border rounded-md resize-none mb-4 text-sm"
               placeholder="Write your review..."
             ></textarea>
-            <input
+            <input 
               type="email"
               name="email"
               value={newReview.email}
