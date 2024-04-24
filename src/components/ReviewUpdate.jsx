@@ -43,7 +43,7 @@ export const ReviewUpdate = () => {
           You can drop your Review here!
         </h2>
         <div className="flex flex-cols-1 sm:flex-cols-2 lg:flex-cols-4 gap-4  justify-center items-center pt-10">
-          <div className="bg-white rounded-lg shadow-md p-6 transform hover:scale-105 transition-transform">
+          <div className="bg-white rounded-lg shadow-lg p-6 transform hover:scale-105 transition-transform">
             <textarea
               name="review"
               value={newReview.review}

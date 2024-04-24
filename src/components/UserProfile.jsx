@@ -30,7 +30,7 @@ const SettingsMenu = ({ isOpen, toggleTheme, theme }) => {
 
   return (
     <div className={`${isOpen ? 'block' : 'hidden'} md:block fixed md:relative right-0 md:right-auto bottom-0 md:bottom-auto z-50  md:z-auto`}>
-      <aside className={`settings-menu transform hover:scale-105 transition-transform font-poppins flex items-center rounded-lg font-semibold text-black text-sm bg-white shadow-lg cursor-pointer md:static w-64 md:w-auto`}>
+      <aside className={`settings-menu transform hover:scale-105 transition-transform font-poppins flex items-center rounded-lg font-semibold text-black text-sm bg-white shadow-lg cursor-pointer  md:static w-64 md:w-auto`}>
         {isOpen && (
           <ul className="menu-list p-4 md:p-10 flex flex-col justify-around gap-3 ">
             <li onClick={toggleTheme} className="cursor-pointer ">
@@ -84,9 +84,11 @@ export const Profile = () => {
   };
 
   return (
-    <div className='max-w-screen-md mx-auto w-full h-full flex flex-col md:flex-row items-center justify-center gap-10 px-4 md:px-0'>
-      <div className="bg-white rounded-lg transform hover:scale-105 transition-transform shadow-lg flex flex-col justify-between w-full md:w-auto">
-        <div className="p-4 md:p-8 flex justify-center ">
+    <div className='flex '>
+    <div className='max-w-screen-md mx-auto w-full h-full flex flex-col mt-52 md:flex-row items-center justify-center gap-10 px-4 md:px-0'>
+      <div className="bg-white rounded-lg transform hover:scale-105 transition-transform shadow-lg flex flex-col  w-full md:w-auto">
+       
+        <div className="p-4 md:p-8 flex justify-center  ">
           <div className="flex items-center justify-center ">
             <img
               className="h-20 w-20 rounded-full mr-4 md:mr-10 ml-4 object-fit" // Added ml-4 for left margin
@@ -115,5 +117,7 @@ export const Profile = () => {
       </div>
       <SettingsMenu isOpen={isMenuOpen} toggleTheme={toggleTheme} theme={theme} />
     </div>
+    
+  </div>
   );
 };

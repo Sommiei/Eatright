@@ -70,7 +70,7 @@ export const DashChatSide = () => {
   };
 
   return (
-    <div className="p-7 text-md font-bold w-full flex flex-col h-screen">
+    <div className=" pl-10 pt-12 pb-10 pr-10  text-md font-bold w-full flex flex-col h-screen">
       <div id="chat-history" className="overflow-auto flex-1">
         {Array.isArray(chatHistory) && chatHistory.length > 0 ? (
           chatHistory.map((chat, index) => (
@@ -87,7 +87,7 @@ export const DashChatSide = () => {
             </div>
           ))
         ) : (
-          <div className="text-gray-400">No chat history available</div>
+          <div className="text-gray-400 ">No chat history available</div>
         )}
       </div>
       <div className="flex items-center mt-4">
