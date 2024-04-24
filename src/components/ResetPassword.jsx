@@ -38,10 +38,11 @@ export const ResetPassword = () => {
         try {
             // Make API call to reset password
             const response = await axios.post(
-                'https://eac2-105-120-132-174.ngrok-free.app/api/v1/users/reset_password',
+                'http://37.27.42.7:5000/api/v1/users/reset-password/',
                 {
-                    newPassword: newPassword,
-                    token: token // Send the token to your backend
+                    token: token ,// Send the token to your backend
+                    new_Password: 'newPassword'
+                    
                 }
             );
 

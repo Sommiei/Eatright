@@ -61,7 +61,7 @@ export const DashFirstSide = ({ setComponent, setShowUserProfile }) => {
  
    
     <button onClick={() => setDashboardVisible(!dashboardVisible) } className="mt-4 absolute left-10 top-0 z-50 "> 
-    <div className='w-[30px] h-[30px] rounded-full bg-gray-400 flex justify-center items-center'>
+    <div className='w-[30px] h-[30px] rounded-full bg-gray-400 flex justify-center items-center transform hover:scale-105 transition-transform'>
         {dashboardVisible ? <BiArrowFromRight size={20} className='text-white'/> : <BiArrowFromLeft size={20} className='text-white'/>} 
         </div> 
       </button>

@@ -10,13 +10,11 @@ export const ForgotPassword = () => {
     e.preventDefault();
     try {
       // Make a POST request to your backend endpoint for resetting password
-      const response = await axios.post('https://38e2-129-205-113-190.ngrok-free.app/api/v1/users/password-recovery/', {
-        email: email, // Send the actual value of the email state variable
-      });
+      const response = await axios.post(`http://37.27.42.7:5000/api/v1/users/password-recovery/${email}`);
       // Handle success response
       console.log(response.data); // Assuming your backend returns a success message
       // Clear form fields after successful submission
-      setEmail('');
+      setEmail(email);
       setSuccessMessage('Reset link sent successfully!');
       
     } catch (error) {

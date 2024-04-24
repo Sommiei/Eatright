@@ -4,8 +4,7 @@ import axios from "axios";
 
 export const ReviewUpdate = () => {
   const [newReview, setNewReview] = useState({
-    review: "",
-    email: "", // You can add logic to get the user's email if needed
+    content: "",
     rating: 0,
   });
 
@@ -27,7 +26,7 @@ export const ReviewUpdate = () => {
   const handleSubmit = async () => {
     try {
       // Send review data to the server
-      const response = await axios.post("/api/reviews", newReview);
+      const response = await axios.post("http://37.27.42.7:5000/api/v1/users/reviews", newReview);
       console.log("Review submitted successfully:", response.data);
       // Optionally, you can redirect the user or show a success message
     } catch (error) {

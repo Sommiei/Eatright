@@ -18,7 +18,7 @@ export const ContactForm = () => {
     event.preventDefault();
     // console.log(baseModel);
 
-    axios.post('https://38e2-129-205-113-190.ngrok-free.app/api/v1/users/contact-us', baseModel)
+    axios.post('http://37.27.42.7:5000/api/v1/users/contact-us', baseModel)
       .then((response) => {
         setResponseMessage('Form submitted successfully!');
         console.log(response.data); // Handle success response

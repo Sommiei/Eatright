@@ -8,17 +8,19 @@ export const Logout = () => {
 
   const handleYesClick = async () => {
     try {
-      // Make API request to logout endpoint with the user's API key
-      await axios.post('LOGOUT_API_ENDPOINT', {
-        apiKey: 'USER_API_KEY_HERE'
-      });
-
-      // Calculate the expiration date
-      const expirationDate = new Date();
-      expirationDate.setFullYear(expirationDate.getFullYear() - 1);
+      // Get token from cookies
+      const token = document.cookie.replace(/(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/, "$1");
       
-      // Delete the token cookie
-      document.cookie = `token=; expires=${expirationDate.toUTCString()}; path=/;`;
+      // Add Authorization header
+      const headers = {
+        Authorization: `Bearer ${token}`
+      };
+
+      // Make API request to logout endpoint with the Authorization header
+      await axios.post('http://37.27.42.7:5000/api/v1/users/logout', {}, { headers });
+      
+      // Remove token from cookies
+      document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 
       // Redirect to the home page
       setIsLoggedOut(false);

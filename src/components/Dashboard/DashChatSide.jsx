@@ -45,7 +45,7 @@ export const DashChatSide = () => {
     setChatHistory(prevChatHistory => [...prevChatHistory, userMessage]);
 
     try {
-      const response = await axios.post('https://38e2-129-205-113-190.ngrok-free.app/api/v1/users/user_prompt', {
+      const response = await axios.post('http://37.27.42.7:5000/api/v1/users/user_prompt', {
         text: chatInput,
       });
 
