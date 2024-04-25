@@ -24,7 +24,7 @@ export const Hero = () => {
           <button className="btn bg-[#9DAF88] text-white hover:text-[#9DAF88] px-6 py-2 rounded-md" onClick={handleTryForFreeClick}>
             Try for free
           </button>
-          <Link smooth to="/dashboard" className="btn btn-outline border-[#9DAF88] text-[#9DAF88] px-6 py-2 rounded-md">Show a Demo</Link>
+          <Link smooth to="" className="btn btn-outline border-[#9DAF88] text-[#9DAF88] px-6 py-2 rounded-md">Show a Demo</Link>
         </div>
       </div>
 
