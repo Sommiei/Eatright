@@ -32,7 +32,7 @@ export const DashFirstSide = ({ setComponent, setShowUserProfile }) => {
  
       {/* Item List */} 
       {dashboardVisible && ( 
-              <div className="w-full md:w-72 bg-white justify-between pt-12 text-black shadow shadow-black h-screen flex flex-col pl-10"> 
+              <div className="w-full md:w-72 bg-white justify-between pt-11 text-black shadow shadow-black h-screen flex flex-col pl-10"> 
  
  <div className="mt-4 space-y-4 md:space-y-8 h-screen">
       {firstDivItems.map((item, index) => (

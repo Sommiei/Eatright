@@ -1,49 +1,14 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FiSettings } from 'react-icons/fi';
-import axios from 'axios'; // Import axios for making HTTP requests
+import axios from 'axios';
 
-const SettingsMenu = ({ isOpen, toggleTheme, theme }) => {
-  const deleteAccount = async (e) => {
-    e.preventDefault(); // Prevent default behavior of the <a> tag
-
-    try {
-      // Send a DELETE request to the server's API endpoint for account deletion
-      const response = await axios.delete('http://37.27.42.7:5000/api/v1/users/delete-user');
-
-      // Check the response status
-      if (response.status === 200) {
-        // Account deleted successfully
-        console.log('Account deleted successfully');
-        // Perform any additional actions after account deletion (e.g., redirecting to a different page)
-      } else {
-        // Handle unexpected response status
-        console.error('Unexpected response status:', response.status);
-        // Optionally, display an error message to the user
-      }
-    } catch (error) {
-      // Handle error
-      console.error('Error deleting account:', error);
-      // Optionally, display an error message to the user
-    }
-  };
-
+const SettingsMenu = ({ isOpen, toggleTheme, theme, deleteAccount }) => {
   return (
     <div className={`${isOpen ? 'block' : 'hidden'} md:block fixed md:relative right-0 md:right-auto bottom-0 md:bottom-auto z-50  md:z-auto`}>
       <aside className={`settings-menu transform hover:scale-105 transition-transform font-poppins flex items-center rounded-lg font-semibold text-black text-sm bg-white shadow-lg cursor-pointer  md:static w-64 md:w-auto`}>
         {isOpen && (
           <ul className="menu-list p-4 md:p-10 flex flex-col justify-around gap-3 ">
-            <li onClick={toggleTheme} className="cursor-pointer ">
-              {/* {theme === 'light' ? (
-                <>
-                  <FiToggleRight className='text-[25px]'/> Toggle Theme (Dark)
-                </>
-              ) : (
-                <>
-                  <FiToggleLeft className='text-[25px]' /> Toggle Theme (Light)
-                </>
-              )} */}
-            </li>
-            <a href='#' onClick={deleteAccount} className="cursor-pointer text-red-500">Delete Account</a>
+            <li onClick={deleteAccount} className="cursor-pointer text-red-500">Delete Account</li>
           </ul>
         )}
       </aside>
@@ -53,27 +18,41 @@ const SettingsMenu = ({ isOpen, toggleTheme, theme }) => {
 
 export const Profile = () => {
   const [user, setUser] = useState({
-    name: '',
-    email: '',
-    avatar: 'https://via.placeholder.com/150', // Placeholder image URL
+    user_firstname: '', // Corrected typo in user_firstname
+    user_lastname: '', // Corrected typo in user_lastname
   });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [theme, setTheme] = useState('light');
 
   useEffect(() => {
-    // Fetch user data when the component mounts
     const fetchUserData = async () => {
       try {
-        const response = await axios.post('http://37.27.42.7:5000/api/v1/users/login/get-current-user'); // Replace 'YOUR_BACKEND_API_ENDPOINT' with your actual API endpoint
-        const userData = response.data; // Assuming your API returns data in the format { name: 'John Doe', email: 'johndoe@example.com'}
+        // Retrieve token from cookies
+        // const token = document.cookie.replace(/(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/, "$1");
+        
+        // Make request to fetch user data
+        const response = await axios.post(
+          `http://37.27.42.7:5000/api/v1/users/login/get-current-user`,
+          {
+            "headers": {
+              "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTQ3MjU1ODcsInN1YiI6IjIifQ.5rZ1yvgiHOpDMJsFM0v3nwZOEvarsBh2uUCOI7yAoz8`,
+            }
+          },
+          {
+
+          }
+           // Pass an empty body since we're only sending the token in the headers
+          
+        );
+        const userData = response.data;
         setUser(userData);
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
     };
 
-    fetchUserData(); // Call the fetchUserData function
-  }, []); // Empty dependency array ensures the effect runs only once
+    fetchUserData();
+  }, []);
 
   const handleAvatarChange = async (e) => {
     const file = e.target.files[0];
@@ -96,20 +75,37 @@ export const Profile = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
+  const deleteAccount = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.delete('http://37.27.42.7:5000/api/v1/users/delete-user');
+      if (response.status === 200) {
+        console.log('Account deleted successfully');
+        // Optionally, you can redirect the user or perform other actions after deleting the account
+      } else {
+        console.error('Unexpected response status:', response.status);
+      }
+    } catch (error) {
+      console.error('Error deleting account:', error);
+    }
+  };
+
   return (
     <div className='flex '>
-      <div className='max-w-screen-xl mx-auto w-full h-full flex flex-col mt-52 md:flex-row items-center justify-center gap-10 px-4 md:px-0'>
+      <div className='max-w-screen-xl mx-auto h-full flex flex-col mt-52 md:flex-row items-center justify-center gap-10 px-4 md:px-0'>
         <div className="bg-white rounded-lg transform hover:scale-105 transition-transform shadow-lg flex flex-col  w-full md:w-auto">
           <div className="p-4 md:p-8 flex justify-center  ">
             <div className="flex items-center justify-center ">
               <img
-                className="h-20 w-20 rounded-full mr-4 md:mr-10 ml-4 object-fit" // Added ml-4 for left margin
-                src={user.avatar} // Use user's avatar URL
+                className="h-20 w-20 rounded-full mr-4 md:mr-10 ml-4 object-fit"
+                src={user.avatar}
                 alt="User Avatar"
               />
               <div>
-                <h2 className="text-xl font-bold">{user.name}</h2>
-                <p className="text-gray-600">{user.email}</p>
+                <h2 className="text-xl font-bold">{user.user_firstname} </h2>
+                
+                <p className="text-gray-600">{user.user_lastname}</p>
               </div>
             </div>
           </div>
@@ -127,7 +123,7 @@ export const Profile = () => {
             <FiSettings className="text-gray-600 cursor-pointer" size={24} onClick={toggleMenu} />
           </div>
         </div>
-        <SettingsMenu isOpen={isMenuOpen} toggleTheme={toggleTheme} theme={theme} />
+        <SettingsMenu isOpen={isMenuOpen} toggleTheme={toggleTheme} theme={theme} deleteAccount={deleteAccount} />
       </div>
     </div>
   );

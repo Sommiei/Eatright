@@ -28,7 +28,7 @@ export const SignIn = () => {
                 data
             );
     
-            const token = response.data.access_token;
+            const token = response.data.access_token.access_token;
     
             // Saving token in cookies
             document.cookie = `token=${token}; path=/`; // Set the token as a cookie
