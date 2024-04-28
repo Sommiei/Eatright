@@ -23,7 +23,7 @@ export const Navbar = () => {
   return (
     <div>
       {/* Navbar for small and medium screens */}
-      <header className="bg-white p-4 flex justify-between text-black items-center px-10 shadow-md sticky top-0 z-10 md:hidden ">
+      <header className="bg-white p-4 flex container justify-between text-black items-center px-10 shadow-md  fixed top-0 z-50 md:hidden ">
         <div className="flex items-center space-x-8">
           {/* Logo */}
           <a href="/">

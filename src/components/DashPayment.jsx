@@ -24,7 +24,7 @@ export const Payment = () => {
       phone,
     },
     publicKey,
-    text: 'Buy Now',
+    text: 'Pay Now',
     onSuccess: ({ reference }) => {
       alert(
         `Your purchase was successful! Transaction reference: ${reference}`
@@ -48,7 +48,7 @@ export const Payment = () => {
   return (
     <div className="App_dashboard py-16 mx-12">
       <div className="container_dashboard flex flex-col md:flex-row justify-center items-center">
-        <div className="item">
+        {/* <div className="item">
           <div className="overlay-effect"></div>
           <img
             className="item-image"
@@ -59,8 +59,8 @@ export const Payment = () => {
             <p className="item-details__title"></p>
             <p className="item-details__amount"></p>
           </div>
-        </div>
-        <div className="checkout mt-8 md:mt-0">
+        </div> */}
+        <div className="checkout mt-8 md:mt-0 ">
           <div className="checkout-form bg-white p-8 rounded-lg shadow-md">
             <h1 className='text-gray-800 text-xl mb-4'>Make Your Payment</h1>
             <div className="checkout-field">
@@ -97,6 +97,6 @@ export const Payment = () => {
           </div>
         </div>
       </div>
-    </div>
+  </div>
   );
 };

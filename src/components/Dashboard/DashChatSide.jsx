@@ -1,75 +1,87 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { FiXCircle } from 'react-icons/fi';
+import { AuthContext } from '../../Contexts/AuthContext';
 
+// Function to remove asterisks from text
+const removeAsterisks = (text) => {
+  return text.replace(/\*/g, ''); // Using regular expression to replace all occurrences of asterisks
+};
 
+export const ChatHistory = ({ chatHistory }) => {
+  // Function to format string response
+  const formatStringResponse = (stringResponse) => {
+    const lines = stringResponse.split('\n').map((line, index) => <p key={index}>{line}</p>);
+    return lines;
+  };
 
-function formatStringResponse(stringResponse) {
-  // Split the string by newlines and map each line to a <p> element
-  const lines = stringResponse.split('\n').map((line, index) => <p key={index}>{line}</p>);
-  
-  // Return the array of <p> elements
-  return lines;
-}
-
-
-
-// ChatHistory component to display chat messages
-export const ChatHistory = ({ chatHistory }) => (
-  <div id="chat-history" className="overflow-auto flex-1">
-    {Array.isArray(chatHistory) && chatHistory.length > 0 ? (
-      chatHistory.map((chat, index) => (
-        <div
-          key={index}
-          className={`flex ${chat.user ? 'justify-end' : 'justify-start'} mb-2`}
-        >
+  return (
+    <div id="chat-history" className="overflow-auto flex-1">
+      {Array.isArray(chatHistory) && chatHistory.length > 0 ? (
+        chatHistory.map((chat, index) => (
           <div
-            className={`max-w-[80%] ${chat.user ? 'bg-[#846B59] text-white shadow-lg rounded-br-none rounded-lg' : 'bg-white text-black shadow-lg rounded-bl-none rounded-lg'} p-2`}
-            style={{ wordWrap: 'break-word' }}
+            key={index}
+            className={`flex ${chat.user ? 'justify-end' : 'justify-start'} mb-2`}
           >
-            {/* {chat.message} */}
-            {formatStringResponse(chat.message)}
+            <div
+              className={`max-w-[60%] sm:max-w-[80%] ${chat.user ? 'bg-[#846B59] text-white shadow-lg rounded-br-none rounded-lg' : 'bg-white text-black shadow-lg rounded-bl-none rounded-lg'} p-2`}
+              style={{ wordWrap: 'break-word' }}
+            >
+              {/* Apply removeAsterisks function to chat message */}
+              {formatStringResponse(removeAsterisks(chat.message))}
+            </div>
           </div>
-        </div>
-      ))
-    ) : (
-      <div className="text-gray-400">No chat history available</div>
-    )}
-  </div>
-);
+        ))
+      ) : (
+        <div className="text-gray-400">No chat history available</div>
+      )}
+    </div>
+  );
+};
 
-// DashChatSide component to handle chat functionality
 export const DashChatSide = () => {
-  const [chatHistory, setChatHistory] = useState([]);
   const [chatInput, setChatInput] = useState('');
+  const [isSending, setIsSending] = useState(false);
+  const { chatHistory, setChatHistory } = useContext(AuthContext); // Use context to access chat history
+  
+  // Counter to track the number of messages sent by the user
   const [chatCount, setChatCount] = useState(0);
 
-  useEffect(() => {
-    if (chatCount === 5) {
-      window.location.href = '/payment'; // Redirect when chatCount reaches 5
-    }
-  }, [chatCount]); // Trigger effect whenever chatCount changes
-
-  
+  // Function to send message
   const sendMessage = async () => {
-    if (!chatInput.trim()) return;
-  
-    const userMessage = {
-      user: true,
-      message: chatInput,
-    };
-    setChatHistory(prevChatHistory => [...prevChatHistory, userMessage]);
-  
+    if (!chatInput.trim() || isSending) return;
+
+    setIsSending(true);
+
     try {
       const token = getTokenFromCookie(); // Retrieve token from cookies
       if (!token) {
         console.error('Token not found');
+        setIsSending(false);
         return;
       }
-  
+
+      // Add the user's input to the chat history
+      const userMessage = {
+        user: true,
+        message: chatInput,
+      };
+      setChatHistory(prevChatHistory => [...prevChatHistory, userMessage]);
+
+      // Increment chat count
+      setChatCount(prevCount => prevCount + 1);
+
+      // Check if the chat count has reached 5
+      if (chatCount === 4) {
+        // Redirect to payment page
+        window.location.href = '/payment';
+        return;
+      }
+
+      // Send the user's input to the server
       const response = await axios.post(
         'http://37.27.42.7:5000/api/v1/users/user_prompt',
-        {"text": chatInput },
+        { "text": chatInput },
         {
           "headers": {
             "Authorization": `Bearer ${token}`,
@@ -77,23 +89,21 @@ export const DashChatSide = () => {
           },
         }
       );
-  
+
+      // Add the bot's response to the chat history
       const botMessage = {
         user: false,
         message: response.data.message,
       };
       setChatHistory(prevChatHistory => [...prevChatHistory, botMessage]);
+
       setChatInput('');
-      setChatCount(prevCount => prevCount + 1); // Increment chat count
     } catch (error) {
-      console.error('Error fetching bot response:', error);
-      if (error.response && error.response.status === 401) {
-        console.error('Authentication error: Token invalid or expired');
-        // Handle authentication error, e.g., redirect user to login page
-      }
+      console.error('Error sending message:', error);
+    } finally {
+      setIsSending(false);
     }
   };
-  
 
   // Function to clear input field
   const handleStopInput = () => {
@@ -106,9 +116,7 @@ export const DashChatSide = () => {
     for (let i = 0; i < cookies.length; i++) {
       const cookie = cookies[i].trim();
       if (cookie.startsWith('token=')) {
-        console.log(cookie.substring(6))
         return cookie.substring(6);
-
       }
     }
     console.error('Token not found');
@@ -116,9 +124,9 @@ export const DashChatSide = () => {
   };
 
   return (
-    <div className="p-7 pl-7 pr-7 pb-7 pt-10 text-md font-bold w-full flex flex-col h-screen">
+    <div className=" container p-7 pl-7 pr-7 pb-14 h-screen text-md border-l sm:border-r sm:border-l  font-bold sm:w-full  max-w-full flex flex-col ">
       <ChatHistory chatHistory={chatHistory} />
-      <div className="flex items-center mt-4">
+      <div className="flex items-center ">
         <input
           type="text"
           value={chatInput}
@@ -126,14 +134,16 @@ export const DashChatSide = () => {
           onKeyPress={e => e.key === 'Enter' && sendMessage()}
           className="flex-1 border border-gray-300 rounded-md px-4 py-2 mr-2 text-sm"
           placeholder="Type your message..."
+          disabled={isSending}
         />
         {chatInput && (
           <button onClick={handleStopInput} className="text-gray-400 hover:text-gray-600">
             <FiXCircle />
           </button>
         )}
-        <button onClick={sendMessage} className="bg-[#846B59] hover:bg-[#bda493] text-white font-bold py-2 px-4 rounded">
-          Send
+        <button onClick={sendMessage} className={`bg-[#846B59] hover:bg-[#bda493] text-white font-bold py-2 px-2
+         rounded ${isSending ? 'opacity-50 cursor-not-allowed sm:py-2 px-4' : ''}`} disabled={isSending}>
+          {isSending ? 'Sending...' : 'Send'}
         </button>
       </div>
     </div>

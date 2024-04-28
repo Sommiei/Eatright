@@ -14,7 +14,7 @@
     width: 635px;
     height: 430px;
     background: white;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    /* box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); */
     border-radius: 20px;
   }
   
@@ -128,5 +128,16 @@
   
   .paystack-button:focus {
     outline: none;
+  }
+
+  @media screen {
+    @media only screen and (max-width: 600px) {
+     .container_dashboard {
+        width: 100%;
+      }
+     .checkout {
+        width: 100%;
+      }
+    }
   }
   

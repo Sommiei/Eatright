@@ -9,20 +9,34 @@ export const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Make a POST request to your backend endpoint for resetting password
-      const response = await axios.post(`http://37.27.42.7:5000/api/v1/users/password-recovery/${email}`);
+      const token = document.cookie.replace(/(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/, "$1");
+      console.log(token);
+      
+      // Make a POST request to the backend endpoint for resetting password
+      const response = await axios.post(
+        'https://eatright.com.ng/api/v1/users/password-recovery',
+        { email }, // Send email as part of the request body
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json', // Set content type
+          },
+        }
+      );
+      
       // Handle success response
       console.log(response.data); // Assuming your backend returns a success message
       // Clear form fields after successful submission
-      setEmail(email);
-      setSuccessMessage('Reset link sent successfully!');
-      
+      setEmail('');
+      setSuccessMessage(response.data.message); // Display success message from the server
     } catch (error) {
       // Handle error response
+      console.error('Error submitting request:', error);
       setErrorMessage('An error occurred. Please try again later.');
     }
   };
-
+  
+     
   return (
     <div className='pt-5'>
       <h2 className="text-3xl font-bold text-center">Forgot Password</h2>

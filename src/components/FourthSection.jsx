@@ -1,13 +1,12 @@
-
 export const FourthSection = () => {
   return (
     <>
-      <div className="px-10 bg-white">
-        <div className="hero pb-10 flex justify-around items-center">
-          <div className="hero-content flex-col lg:flex-row-reverse lg:items-center gap-20">
+      <div className="px-8 bg-white">
+        <div className="hero pb-6 flex justify-around items-center">
+          <div className="hero-content flex-col lg:flex-row-reverse lg:items-center sm:gap-20">
             <img
               src="4th eatright image.png"
-              className="w-full max-w-sm rounded-lg shadow-2xl mb-8 lg:mb-0"
+              className="w-full max-w-sm rounded-lg shadow-2xl mb-4 lg:mb-0"
               alt="EatRight"
             />
             <div className="w-full lg: text-left ">

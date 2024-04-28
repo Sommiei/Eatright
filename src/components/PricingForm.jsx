@@ -7,7 +7,7 @@ export const PricingForm = () => {
       <div className="p-6" id="pricing">
       <h1 className="text-center font-bold text-5xl py-6 text-black">Pricing <span className="text-[#846b57]">Plans</span></h1>
     <div className="flex items-center justify-center gap-6 py-2 flex-wrap">
-      <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+      <div className="w-full max-w-[300px] p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
         <h5 className="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">
           Monthly plan
         </h5>
@@ -87,12 +87,12 @@ export const PricingForm = () => {
         </Link>
       </div>
 
-      <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+      <div className="w-full max-w-[300px] p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
         <h5 className="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">
           Premium Plan
         </h5>
         <div className="dicount relative">
-          <button className="bg-[#846b57] h-[40px] absolute bottom-5 right-1 w-[100px] rounded-full text-white font-bold text-sm">
+          <button className="bg-[#846b57] h-[40px] absolute bottom-5 -right-4 w-[100px] rounded-full text-white font-bold text-sm">
             20% discount
           </button>
         </div>
@@ -103,7 +103,7 @@ export const PricingForm = () => {
             /Yearly
           </span>
         </div>
-        <ul role="list" className="space-y-5 my-7">
+        <ul role="list" className="space-y-5 my-7 ">
           <li className="flex items-center">
             <svg
               className="flex-shrink-0 w-4 h-4 text-gray-500 dark:text-gray-300"

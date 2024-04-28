@@ -24,7 +24,7 @@ export const SignIn = () => {
             };
     
             const response = await axios.post(
-                'http://37.27.42.7:5000/api/v1/users/login',
+                'https://api.eatright.com.ng/api/v1/users/login',
                 data
             );
     

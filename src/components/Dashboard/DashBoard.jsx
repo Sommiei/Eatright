@@ -56,7 +56,7 @@ export const DashBoard = () => {
 
   return (
     <>
-      <div className="flex justify-between ">
+      <div className="flex ">
         <DashFirstSide setComponent={setComponent} setShowUserProfile={setShowUserProfile} />
         {component ? (
           <div className=''>
@@ -69,9 +69,7 @@ export const DashBoard = () => {
             
           </>
         )}
-        <button className="toggle-button" onClick={toggleHistory}>
-          {showHistory ? <i className="fas fa-angle-double-left"></i> : <i className="fas fa-angle-double-right"></i>}
-        </button>
+       
       </div>
     </>
   );

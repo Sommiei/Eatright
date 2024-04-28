@@ -18,7 +18,7 @@ export const ContactForm = () => {
     event.preventDefault();
     // console.log(baseModel);
 
-    axios.post('http://37.27.42.7:5000/api/v1/users/contact-us', baseModel)
+    axios.post('https://eatright.com.ng/api/v1/users/contact-us', baseModel)
       .then((response) => {
         setResponseMessage('Form submitted successfully!');
         console.log(response.data); // Handle success response
@@ -43,7 +43,7 @@ export const ContactForm = () => {
         </h1>
       </div>
       <div className="flex flex-col items-center justify-center lg:flex-row">
-        <div className="card w-full max-w-sm shadow-2xl bg-base-100 mb-8 lg:mb-0 lg:mr-8 lg:w-1/2">
+        <div className="card w-full max-w-[300px] shadow-2xl bg-base-100 mb-8 lg:mb-0 lg:mr-8 lg:w-1/2">
           <div className="card-body">
             <div className="form-control">
               <label className="label">

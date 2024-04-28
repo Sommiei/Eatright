@@ -11,32 +11,34 @@ export function UseAuth(){
 
 
 export function AuthProvider ({ children }){
-    const [CurrentUser, setcurrentUser] = useState(null);
-    const [UserLoggedIn, setUserLoggedIn] = useState(false);
+    const [filteredChatHistory, setFilteredChatHistory] = useState([]);
+    const [getUser, setGetUser] =useState('')
+    const [email, setemaill] = useState('')
+    const [chatHistory, setChatHistory] = useState(() => {
+        // Retrieve chat history from local storage or initialize an empty array
+        const storedChatHistory = localStorage.getItem('chatHistory');
+        return storedChatHistory ? JSON.parse(storedChatHistory) : [];
+      });
     const [loading,setLoading] = useState(true)
     
     useEffect(()=>{
-        const UnSubscribe = onAuthStateChanged(auth,initializeUser)
-        return UnSubscribe;
+       
         },[])
     
     
-        async function initializeUser(user){
-            if (user){
-                setcurrentUser({...user}) 
-            }
-            else{
-                setcurrentUser(null)
-                setUserLoggedIn(true)
-            }
-            setLoading(false);
-
-        }
+      
 
         const value ={
-            CurrentUser, 
-            UserLoggedIn, 
-            loading
+            filteredChatHistory,
+            setFilteredChatHistory,
+            loading,
+            setLoading,
+            chatHistory,
+            setChatHistory,
+            getUser,
+            setGetUser,
+            email,
+            setemaill
 
         }
         return(

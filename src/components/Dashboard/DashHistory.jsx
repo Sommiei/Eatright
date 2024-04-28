@@ -1,47 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { AuthContext } from '../../Contexts/AuthContext';
 
 export const DashHistory = () => {
   const [searchText, setSearchText] = useState('');
-  const [chatHistory, setChatHistory] = useState([]);
-  const [filteredChatHistory, setFilteredChatHistory] = useState([]);
+  const { filteredChatHistory, setFilteredChatHistory, chatHistory } = useContext(AuthContext);
 
   useEffect(() => {
-    // Fetch chat history from the API initially
-    fetchChatHistory();
-  }, []);
+    if (!searchText) return setFilteredChatHistory([]);
 
-  useEffect(() => {
     // Filter chat history based on search text
-    const filteredHistory = chatHistory.filter(chat =>
-      chat.message.toLowerCase().includes(searchText.toLowerCase())
-    );
-    setFilteredChatHistory(filteredHistory);
-  }, [searchText, chatHistory]);
-
-  // Function to fetch chat history from the API
-  const fetchChatHistory = async () => {
-    try {
-      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTQ3Nzc3ODgsInN1YiI6IjcifQ.NR2FqVqPC_8nSMBax96OOwGMZ6IfdxIDsp_GvM_dpLo'; // Define your token here
-      const response = await axios.post('http://37.27.42.7:5000/api/v1/users/user_prompt', {}, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
+    const filteredHistory = chatHistory
+      .filter(chat => chat.message.toLowerCase().includes(searchText.toLowerCase()))
+      .map(chat => {
+        // Highlight the search text in each chat message
+        const highlightedMessage = chat?.message?.replace(
+          new RegExp(searchText, 'gi'),
+          match => `<span class="text-blue-500">${match}</span>`
+        );
+        return { ...chat, highlightedMessage };
       });
-      setChatHistory(response.data);
-    } catch (error) {
-      console.error('Error fetching chat history:', error);
-    }
-  };
+
+    // Sort filtered history based on relevance of search text
+    const sortedHistory = filteredHistory.sort((a, b) => {
+      const indexA = a.message.toLowerCase().indexOf(searchText.toLowerCase());
+      const indexB = b.message.toLowerCase().indexOf(searchText.toLowerCase());
+      // If search text is not found in one of the messages, bring the other one to the top
+      if (indexA === -1) return 1;
+      if (indexB === -1) return -1;
+      return indexA - indexB;
+    });
+
+    setFilteredChatHistory(sortedHistory);
+  }, [searchText]);
 
   // Handle input change in the search input
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     setSearchText(e.target.value);
   };
 
   return (
-    <div className="w-full lg:w-72 h-screen bg-white overflow-auto shadow px-5">
-      <div className="p-4">
+    <div className=" lg:w-72 sm:block hidden  sm:h-auto bg-white overflow-auto px-5">
+      <div className="p-4 scroll-m-10">
         <input
           type="text"
           value={searchText}
@@ -53,7 +53,7 @@ export const DashHistory = () => {
           <h3 className="text-lg font-bold mb-2">Past Chat History</h3>
           <ul>
             {filteredChatHistory.map((chat, index) => (
-              <li key={index}>{chat.message}</li>
+              <li key={index} dangerouslySetInnerHTML={{ __html: chat.highlightedMessage }} />
             ))}
           </ul>
         </div>

@@ -38,7 +38,7 @@ export const ResetPassword = () => {
         try {
             // Make API call to reset password
             const response = await axios.post(
-                'http://37.27.42.7:5000/api/v1/users/reset-password/',
+                'https://api.eatright.com.ng/v1/users/reset-password/',
                 {
                     token: token ,// Send the token to your backend
                     new_Password: 'newPassword'

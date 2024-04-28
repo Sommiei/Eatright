@@ -31,7 +31,7 @@ export const SignUp = () => {
             }
 
             // Make the API call to register the user
-            const response = await axios.post('http://37.27.42.7:5000/api/v1/users/register', {
+            const response = await axios.post('https://api.eatright.com.ng/api/v1/users/register', {
                 first_name: firstName,
                 last_name: lastName,
                 email: email,

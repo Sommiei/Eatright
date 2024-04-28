@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import{ useState, useEffect } from 'react';
 import { FiSettings } from 'react-icons/fi';
 import axios from 'axios';
+import { AuthContext } from '../Contexts/AuthContext';
+
 
 const SettingsMenu = ({ isOpen, toggleTheme, theme, deleteAccount }) => {
   return (
@@ -23,22 +25,21 @@ export const Profile = () => {
   });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [theme, setTheme] = useState('light');
+  
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         // Retrieve token from cookies
-        // const token = document.cookie.replace(/(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/, "$1");
-        
+        const token = document.cookie.replace(/(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/, "$1");
+        console.log(token)
         // Make request to fetch user data
-        const response = await axios.post(
-          `http://37.27.42.7:5000/api/v1/users/login/get-current-user`,
+        const response = await axios.get(
+          `https://api.eatright.com.ng/api/v1/users/login/get-current-user`,      
           {
             "headers": {
-              "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTQ3MjU1ODcsInN1YiI6IjIifQ.5rZ1yvgiHOpDMJsFM0v3nwZOEvarsBh2uUCOI7yAoz8`,
+              "Authorization": `Bearer ${token}`,
             }
-          },
-          {
 
           }
            // Pass an empty body since we're only sending the token in the headers
@@ -94,7 +95,7 @@ export const Profile = () => {
   return (
     <div className='flex '>
       <div className='max-w-screen-xl mx-auto h-full flex flex-col mt-52 md:flex-row items-center justify-center gap-10 px-4 md:px-0'>
-        <div className="bg-white rounded-lg transform hover:scale-105 transition-transform shadow-lg flex flex-col  w-full md:w-auto">
+        <div className="bg-white rounded-lg transform w-[300px] hover:scale-105 transition-transform shadow-lg flex flex-col  w-full md:w-auto">
           <div className="p-4 md:p-8 flex justify-center  ">
             <div className="flex items-center justify-center ">
               <img
@@ -103,13 +104,13 @@ export const Profile = () => {
                 alt="User Avatar"
               />
               <div>
-                <h2 className="text-xl font-bold">{user.user_firstname} </h2>
+                <h2 className="text-sm font-bold">{user.email} </h2>
                 
-                <p className="text-gray-600">{user.user_lastname}</p>
+                <p className="text-gray-600 text-sm">{user.first_name}</p>
               </div>
             </div>
           </div>
-          <div className="p-4 md:p-8 flex justify-between items-center">
+          <div className="  sm:p-4 md:p-8 flex justify-between items-center ">
             <label htmlFor="avatar" className="cursor-pointer">
               <input
                 type="file"

@@ -39,24 +39,24 @@ export const Logout = () => {
   return (
     <>
       {isLoggedOut && (
-        <div className="flex flex-col justify-center items-center h-screen transform hover:scale-105 transition-transform">
-          <div className="shadow-xl w-full max-w-md p-6 bg-white rounded-lg">
+        <div className="flex justify-center items-center sm:pt-40 ">
+          <div className="w-full max-w-[300px] p-20 sm:p-6 bg-white rounded-lg sm:shadow">
             <h1 className="text-red-500 font-semibold text-center mb-4">
               Logout Alert
             </h1>
             <h2 className="text-black text-center mb-6">
               Are you sure you want to log out?
             </h2>
-            <div className="flex justify-center gap-4">
+            <div className="flex flex-col gap-4 md:flex-row md:justify-center">
               <button
                 onClick={handleNoClick}
-                className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded"
+                className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded w-full md:w-auto"
               >
                 No
               </button>
               <button
                 onClick={handleYesClick}
-                className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+                className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded w-full md:w-auto"
               >
                 Yes
               </button>
