@@ -52,9 +52,9 @@ export const SignIn = () => {
 
     return (
         <>
-            <div className='pt-5'><h2 className="text-3xl font-bold text-center">Login</h2></div>
+            
             <div className="max-w-md mx-auto mt-20 p-5 bg-[#F4F7FA] rounded-lg">
-                <div className='pb-10'>
+                <div className='pb-5'>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
                             <label htmlFor="email" className="block text-gray-700">Email</label>

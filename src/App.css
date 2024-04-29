@@ -130,6 +130,8 @@
     outline: none;
   }
 
+  /* styles.css */
+/*  */
   @media screen {
     @media only screen and (max-width: 600px) {
      .container_dashboard {

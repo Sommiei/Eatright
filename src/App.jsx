@@ -16,7 +16,7 @@ import { Home } from './components/Home/index';
 import { ChattingBot } from './components/ChattingBot';
 import { SignUp } from './components/SignUp';
 import { SignIn } from './components/SignIn';
-import { Navbar3 } from './components/Navbar3';
+import { Navbar3 } from "./components/Navbar3";
 import { NavBarTwo } from './components/NavBarTwo';
 import { Profile } from './components/UserProfile'; // Import UserProfile component
 import { Payment } from './components/DashPayment';
@@ -46,7 +46,7 @@ function App() {
         <Route path="/Home" element={<div><Navbar /><Home /></div>} />
         <Route path="/chatBot" element={<div><ChattingBot /></div>} />
         <Route path="/SignUp" element={<div><NavBarTwo /><SignUp /></div>} />
-        <Route path="/SignIn" element={<div><NavBarTwo /><SignIn /></div>} />
+        <Route path="/SignIn" element={<div><Navbar3 /><SignIn /></div>} />
         <Route path="/AboutUs" element={<div><AboutUs /></div>} />
         <Route path="/payment" element={<div><Payment /></div>} />
         <Route path="/Terms" element={<div><Termsandcondition /></div>} />

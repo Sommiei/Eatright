@@ -4,8 +4,15 @@ import { FiXCircle } from 'react-icons/fi';
 import { AuthContext } from '../../Contexts/AuthContext';
 
 // Function to remove asterisks from text
+// const removeAsterisks = (text) => {
+//   return text.replace(/\*/g, ''); // Using regular expression to replace all occurrences of asterisks
+// };
 const removeAsterisks = (text) => {
-  return text.replace(/\*/g, ''); // Using regular expression to replace all occurrences of asterisks
+  if (text !== undefined && text !== null) {
+    return text.toString().replace(/\*/g, ''); // Using regular expression to replace all occurrences of asterisks
+  } else {
+    return ''; // Return an empty string if text is undefined or null
+  }
 };
 
 export const ChatHistory = ({ chatHistory }) => {
@@ -80,7 +87,7 @@ export const DashChatSide = () => {
 
       // Send the user's input to the server
       const response = await axios.post(
-        'http://37.27.42.7:5000/api/v1/users/user_prompt',
+        'https://api.eatright.com.ng/api/v1/users/user_prompt',
         { "text": chatInput },
         {
           "headers": {

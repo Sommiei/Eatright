@@ -1,8 +1,21 @@
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 import { HashLink as Link } from 'react-router-hash-link';
+import { motion } from 'framer-motion';
+
+const container = (delay) => ({
+  hidden: { x: -100, opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: { duration: 0.7, delay: delay },
+  },
+});
 
 
 export const Hero = () => {
+
+ 
+
   const navigate = useNavigate(); // Initialize useNavigate
 
   const handleTryForFreeClick = () => {
@@ -14,9 +27,13 @@ export const Hero = () => {
     <section className="eat-right_hero container mx-auto flex flex-col md:flex-row items-center px-10">
       {/* Text area */}
       <div className="eat-right_hero-text max-w-md md:max-w-lg md:pr-10 pt-5 md:pt-0 text-black"> {/* Adjust padding */}
-        <h1 className="text-5xl md:text-4xl font-bold leading-tight mb-4 font-poppins ">
+        <motion.h1 
+        variants={container(0)}
+        initial="hidden"
+        animate="visible"
+        className="text-5xl md:text-4xl font-bold mt-20 leading-tight font-poppins sm:mb-4">
           Discover a <span className="text-[#846B57]">World</span> of Fresh, Nutritious Delights!
-        </h1>
+        </motion.h1>
         <p className="text-md md:text-xl mb-6 font-poppins text-black">
           Let our AI Chatbot guide you through a personalized journey to healthier choices.
         </p>
@@ -30,7 +47,13 @@ export const Hero = () => {
 
       {/* Image area */}
       <div className="eat-right_hero-image  md:ml-auto mb-8 md:mb-0 ">
-        <img src="hero-react.png" alt="" className="w-300px md: h-auto rounded-full pt-5" />
+        
+        <motion.img 
+        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, x: 100 }}
+        transition={{ duration: 2.5 }}
+        src="hero-react.png" alt="" className="w-300px md: h-auto rounded-full pt-5"  />
+        
       </div>
     </section>
   );

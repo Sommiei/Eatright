@@ -17,7 +17,7 @@ export const Logout = () => {
       };
 
       // Make API request to logout endpoint with the Authorization header
-      await axios.post('http://37.27.42.7:5000/api/v1/users/logout', {}, { headers });
+      await axios.post('https://api.eatright.com.ng/api/v1/users/logout', {}, { headers });
       
       // Remove token from cookies
       document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
@@ -40,7 +40,7 @@ export const Logout = () => {
     <>
       {isLoggedOut && (
         <div className="flex justify-center items-center sm:pt-40 ">
-          <div className="w-full max-w-[300px] p-20 sm:p-6 bg-white rounded-lg sm:shadow">
+          <div className="w-full max-w-[300px] p-20 sm:p-6 bg-white rounded-lg  sm:shadow">
             <h1 className="text-red-500 font-semibold text-center mb-4">
               Logout Alert
             </h1>

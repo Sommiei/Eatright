@@ -23,7 +23,7 @@ export const Navbar = () => {
   return (
     <div>
       {/* Navbar for small and medium screens */}
-      <header className="bg-white p-4 flex container justify-between text-black items-center px-10 shadow-md  fixed top-0 z-50 md:hidden ">
+      <header className="bg-white p-4 flex container w-full justify-between text-black items-center px-10 shadow-md  fixed top-0 z-50 md:hidden ">
         <div className="flex items-center space-x-8">
           {/* Logo */}
           <a href="/">
@@ -78,19 +78,20 @@ export const Navbar = () => {
 
       {/* Menu items for small and medium screens */}
       {showMenu && (
-        <div className="bg-white shadow-md p-4 mt-2 md:hidden">
-          <div className="flex flex-col space-y-4">
-            <Link smooth to="/About" className="text-gray-800 hover:text-gray-600 text-lg px-4 py-2 rounded-full shadow-md">About Us</Link>
-            <Link smooth to="/#pricing" className="text-gray-800 hover:text-gray-600 text-lg px-4 py-2 rounded-full shadow-md">Pricing</Link>
-            <Link smooth to="/#contact" className="text-gray-800 hover:text-gray-600 text-lg px-4 py-2 rounded-full shadow-md">Contact</Link>
+        <div className="bg-white p-4 mt-2 md:hidden">
+          <div className="flex flex-col space-y-5 border-b font-bold">
+           <div className='border-b mt-8'> <Link smooth to="/About" className="text-gray-800 hover:text-gray-600 text-lg px-4 py-2 rounded-full">About Us</Link></div>
+           <div className='border-b'> <Link smooth to="/#pricing" className="text-gray-800 hover:text-gray-600 text-lg px-4 py-2 rounded-full ">Pricing</Link></div>
+           <div className='border-b'><Link smooth to="/#contact" className="text-gray-800 hover:text-gray-600 text-lg px-4 py-2 rounded-full ">Contact</Link></div>
             {/* Render login and sign up buttons */}
             {!isLoggedIn && (
-              <div className='flex items-center text-[#9DAF89] font-bold'>
-                <a href='/SignIn' className="text-lg px-4 py-2 rounded-full shadow-md w-[100]">Log In</a>
+              <div className='flex items-center  font-bold border-b'>
+                <a href='/SignIn' className="text-lg px-4 py-0 rounded-full  items-center">Log In</a>
               </div>
             )}
             {!isLoggedIn && (
-              <a href='/SignUp' className="items-center hover:text-gray-600 text-[#846B59] font-bold text-lg px-4 py-2 rounded-full shadow-md">Sign Up</a>
+              <div className=''> 
+              <a href='/SignUp' className="items-center hover:text-gray-600 font-bold text-lg px-4 py-0 rounded-full ">Sign Up</a></div>
             )}
           </div>
         </div>

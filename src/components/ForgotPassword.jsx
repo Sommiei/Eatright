@@ -14,11 +14,11 @@ export const ForgotPassword = () => {
       
       // Make a POST request to the backend endpoint for resetting password
       const response = await axios.post(
-        'https://eatright.com.ng/api/v1/users/password-recovery',
-        { email }, // Send email as part of the request body
+        `https://api.eatright.com.ng/api/v1/users/password-recovery/${email}`,
+         // Send email as part of the request body
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
+          "headers": {
+            "Authorization": `Bearer ${token}`,
             'Content-Type': 'application/json', // Set content type
           },
         }

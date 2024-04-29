@@ -66,9 +66,9 @@ export const SignUp = () => {
 
     return (
         <>
-            <div className='pt-5'><h2 className="text-3xl font-bold text-center sticky top-0 z-50 ">Sign Up</h2></div>
-            <div className="max-w-md mx-auto mt-5 p-5 bg-[#F4F7FA] rounded-lg">
-                <div className='pb-10'>
+        
+            <div className="max-w-md mx-auto mt-5 p-5 bg-[#F4F7FA] rounded-lg   ">
+                <div className='pb-5'>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
                             <label htmlFor="firstName" className="block text-gray-700">First Name</label>
@@ -169,7 +169,7 @@ export const SignUp = () => {
                         <div className='flex justify-center items-center mt-3'>
                             <button
                                 type="submit"
-                                className="bg-[#9DAF89] text-white py-2 px-36 rounded hover:bg-[#846B59] 
+                                className="bg-[#9DAF89] text-white py-2 px-32 sm:px-36 rounded hover:bg-[#846B59] 
                                 focus:outline-none focus:bg-[#9DAF89]"
                                 disabled={isRegistering}
                             >

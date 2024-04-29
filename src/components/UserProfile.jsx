@@ -55,18 +55,18 @@ export const Profile = () => {
     fetchUserData();
   }, []);
 
-  const handleAvatarChange = async (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
+  // const handleAvatarChange = async (e) => {
+  //   const file = e.target.files[0];
+  //   const reader = new FileReader();
 
-    reader.onloadend = () => {
-      setUser({ ...user, avatar: reader.result });
-    };
+  //   reader.onloadend = () => {
+  //     setUser({ ...user, avatar: reader.result });
+  //   };
 
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-  };
+  //   if (file) {
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -80,7 +80,7 @@ export const Profile = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.delete('http://37.27.42.7:5000/api/v1/users/delete-user');
+      const response = await axios.delete('https://api.eatright.com.ng/api/v1/users/delete-user');
       if (response.status === 200) {
         console.log('Account deleted successfully');
         // Optionally, you can redirect the user or perform other actions after deleting the account
@@ -98,11 +98,11 @@ export const Profile = () => {
         <div className="bg-white rounded-lg transform w-[300px] hover:scale-105 transition-transform shadow-lg flex flex-col  w-full md:w-auto">
           <div className="p-4 md:p-8 flex justify-center  ">
             <div className="flex items-center justify-center ">
-              <img
+              {/* <img
                 className="h-20 w-20 rounded-full mr-4 md:mr-10 ml-4 object-fit"
                 src={user.avatar}
                 alt="User Avatar"
-              />
+              /> */}
               <div>
                 <h2 className="text-sm font-bold">{user.email} </h2>
                 
@@ -111,7 +111,7 @@ export const Profile = () => {
             </div>
           </div>
           <div className="  sm:p-4 md:p-8 flex justify-between items-center ">
-            <label htmlFor="avatar" className="cursor-pointer">
+            {/* <label htmlFor="avatar" className="cursor-pointer">
               <input
                 type="file"
                 id="avatar"
@@ -120,7 +120,7 @@ export const Profile = () => {
                 onChange={handleAvatarChange}
               />
               <span className="text-blue-600">Change Avatar</span>
-            </label>
+            </label> */}
             <FiSettings className="text-gray-600 cursor-pointer" size={24} onClick={toggleMenu} />
           </div>
         </div>

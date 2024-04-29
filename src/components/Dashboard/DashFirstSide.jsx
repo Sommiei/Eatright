@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; 
+import { useState } from 'react'; 
 import { BiChat, BiUser, BiDollar, BiLogOut, BiNotification, BiMenuAltLeft, BiMenuAltRight, BiMoney, BiStar, BiArrowFromRight, BiArrowFromLeft, BiHistory } from 'react-icons/bi'; 
 import { Profile } from '../UserProfile'; 
 import { PricingForm } from '../PricingForm'; 
@@ -7,6 +7,7 @@ import { DashChatSide } from './DashChatSide';
 import { DashHistory } from './DashHistory'; 
 import { Logout } from '../Logout'; 
 import { ReviewUpdate } from '../ReviewUpdate'; 
+
  
 export const DashFirstSide = ({ setComponent, setShowUserProfile }) => { 
   const [dashboardVisible, setDashboardVisible] = useState(true); 
@@ -19,7 +20,6 @@ export const DashFirstSide = ({ setComponent, setShowUserProfile }) => {
  
   const firstDivItems = [ 
     { text: 'Chat', icon: <BiChat size={25}/>, },
-    { text: 'History', icon: <BiHistory size={25}/>,},
     { text: 'User Profile', icon: <BiUser size={25} />, component: <Profile />,   }, // Changed component path to '/profile' 
     { text: 'Payment', icon: <BiMoney size={25}/>, component: <Payment />, }, 
     { text: 'Review', icon: <BiStar size={25}/>, component: <ReviewUpdate />, }, 
@@ -37,12 +37,12 @@ export const DashFirstSide = ({ setComponent, setShowUserProfile }) => {
       {dashboardVisible && ( 
           <div className="w-full  md:w-72 bg-white justify-between pt-11  text-black flex flex-col pl-1 sm:pl-10"> 
  
- <div className="mt-4 space-y-4 md:space-y-8  ">
+ <div className="mt-4 space-y-4 md:space-y-8 rounded-t-[50px] rounded-b-[50px] ">
       {firstDivItems.map((item, index) => (
         <div
           key={index}
           className={`flex items-center cursor-pointer text-black   transform hover:scale-105 transition-transform focus:bg-[#a88463] focus-outline 
-           rounded-full w-[30px] md:w-[150px] h-[50px] ${
+           rounded-full w-[30px] md:w-[150px] h-[50px]  ${
             activeButton === item.text ? "bg-[#a88463] text-white" : ""
             
           }`}
@@ -53,8 +53,11 @@ export const DashFirstSide = ({ setComponent, setShowUserProfile }) => {
           }}
           
         >
-          <div className="bg-[#846B57] w-[40px] h-[40px] flex text-white rounded-full justify-center items-center">
-            {item.icon}
+          <div className="bg-[#846B57] w-[40px] h-[40px] flex text-white rounded-full justify-center items-center ">
+          <div className="tooltip tooltip-right z-50 " data-tip={item.text} >
+          {item.icon}
+          </div>
+       
           </div>
           <span className="ml-2 font-bold sm:block  hidden">{item.text}</span>
         </div>

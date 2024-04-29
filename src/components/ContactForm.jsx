@@ -18,7 +18,7 @@ export const ContactForm = () => {
     event.preventDefault();
     // console.log(baseModel);
 
-    axios.post('https://eatright.com.ng/api/v1/users/contact-us', baseModel)
+    axios.post('https://api.eatright.com.ng/api/v1/users/contact-us', baseModel)
       .then((response) => {
         setResponseMessage('Form submitted successfully!');
         console.log(response.data); // Handle success response

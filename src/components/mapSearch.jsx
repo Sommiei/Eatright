@@ -16,7 +16,6 @@ export const AxiosPageApi = () => {
     setEDeyLoad(true);
     setGitError("");
     axios
-      .get(`http://49.13.2.10:4000/todos/`)
       .then((response) => {
         console.log(response.status);
         console.log("here data", response.data);
@@ -37,7 +36,6 @@ export const AxiosPageApi = () => {
     setEDeyLoad(true);
     setGitError("");
     axios
-      .get(`http://49.13.2.10:4000/todos/?name=${nameQuery}`)
       .then((response) => {
         console.log(response.status);
         console.log("here data", response.data);
